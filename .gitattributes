@@ -1,0 +1,6 @@
+# GitHub language stats should represent the Codex skill, not the static docs site.
+index.html linguist-vendored
+docs/index.html linguist-vendored
+
+# Markdown files are the main skill/docs surface.
+*.md linguist-detectable
