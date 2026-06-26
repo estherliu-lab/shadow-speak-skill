@@ -4,6 +4,14 @@
 
 Turn short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese text into shadowing scripts, sentence breakdowns, review cards, Anki CSV, quizzes, and daily study posts.
 
+## English Introduction
+
+Shadow Speak Skill is a Codex skill for English and Japanese language learners who want to turn real study material into practice-ready learning packs. Instead of only translating text, it helps learners understand useful sentences, speak them aloud, review them later, and export them into reusable study formats.
+
+The most reliable workflow is simple: paste a short article, dialogue, subtitle text, or SRT/VTT captions, then ask Codex to create a shadowing pack. The skill can generate Chinese summaries, key expressions, sentence breakdowns, pronunciation and rhythm notes, quizzes, Anki CSV cards, and short daily study posts.
+
+This project is designed for learners who want a smooth first experience. The recommended first test uses 2-5 short sentences, not a video link. YouTube is treated as an optional last step because many videos do not expose public caption tracks; when using video material, copied transcript text or SRT/VTT captions are much more reliable.
+
 说明页 / Website:
 [https://estherliu-lab.github.io/shadow-speak-skill/](https://estherliu-lab.github.io/shadow-speak-skill/)
 
