@@ -8,6 +8,36 @@
 
 说明页支持中文、English、日本語三种语言切换，包含用途、适合人群、使用方法、输入输出和 YouTube 读取限制。
 
+## 下载和安装
+
+直接下载：
+
+[Download ZIP](https://github.com/estherliu-lab/shadow-speak-skill/archive/refs/heads/main.zip)
+
+### Windows
+
+```powershell
+git clone https://github.com/estherliu-lab/shadow-speak-skill.git "$env:USERPROFILE\.codex\skills\shadow-speak-skill"
+```
+
+或者手动下载 ZIP，解压后把文件夹放到：
+
+```text
+C:\Users\你的用户名\.codex\skills\shadow-speak-skill
+```
+
+### macOS / Linux
+
+```bash
+git clone https://github.com/estherliu-lab/shadow-speak-skill.git ~/.codex/skills/shadow-speak-skill
+```
+
+安装后重启 Codex，然后在新对话里输入：
+
+```text
+$shadow-speak-skill 帮我把这段视频字幕做成影子跟读学习包。
+```
+
 ## 它适合谁
 
 - 想用 YouTube 学英语或日语，但不知道怎么拆字幕的人
