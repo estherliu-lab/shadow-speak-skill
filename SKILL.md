@@ -34,6 +34,23 @@ When the user provides a YouTube URL:
 3. If the transcript is available, clean it with `scripts/subtitle_cleaner.py` when it contains timestamps, cue IDs, or repeated subtitle lines.
 4. Then generate the requested learning mode.
 
+### Fast YouTube Triage
+
+This rule overrides the slower YouTube workflow above when a user simply wants a YouTube video recognized quickly.
+
+1. Do one fast public-caption attempt first. Prefer:
+   `scripts/youtube_transcript_fetcher.py <url> --json --timeout 8`
+   - The script checks the watch page caption metadata and the public `timedtext` caption list.
+   - Default language priority is Japanese first, then English.
+   - Do not show the user every internal probe unless they ask for debugging details.
+2. If the fast attempt succeeds, use the returned transcript directly. Clean it with `scripts/subtitle_cleaner.py` only when it contains timestamps, cue IDs, repeated subtitle lines, or VTT/SRT formatting.
+3. If captions are unavailable or access fails, stop quickly and say:
+   `我暂时无法直接读取这条 YouTube 视频的公开字幕。你可以粘贴 YouTube 字幕、上传 SRT/VTT 字幕，或复制视频文稿；我会继续帮你生成学习包。`
+   Then give one short next step:
+   `最快方式：打开 YouTube 的“显示文字稿/Transcript”，复制字幕贴给我。`
+4. For music videos and songs, be extra clear: many lyrics are embedded in the video, disabled as captions, or not exposed as public caption tracks. Do not download audio/video, run OCR, or invent lyrics. Do not reproduce full song lyrics unless the user provides a short excerpt that is allowed for learning; keep lyric quotation brief and transform it into explanations, vocabulary, and practice tasks.
+5. Then generate the requested learning mode from the accessible or user-provided text.
+
 ## Input Detection
 
 - YouTube URL: attempt accessible transcript workflow.

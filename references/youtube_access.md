@@ -8,8 +8,19 @@ Try only accessible information:
 
 1. Public page title and description.
 2. Visible transcript text if the browsing environment exposes it.
-3. Public caption metadata through `scripts/youtube_transcript_fetcher.py`.
+3. Public caption metadata through `scripts/youtube_transcript_fetcher.py <url> --json --timeout 8`.
 4. User-provided captions, SRT, VTT, or copied transcript.
+
+## Fast Recognition Rule
+
+For a plain YouTube link, make one quick caption attempt first. The helper checks both:
+
+- watch page `captionTracks`
+- YouTube public `timedtext` track list
+
+If it succeeds, continue directly to the learning package. If it fails, do not keep trying multiple unrelated routes in front of the user. Give the fallback and ask for pasted captions/SRT/VTT.
+
+For Japanese videos, prefer Japanese captions before English captions. For songs and music videos, be clear that lyrics are often not exposed as public caption tracks even when text appears on screen.
 
 ## Do Not
 
@@ -17,6 +28,9 @@ Try only accessible information:
 - Do not infer full transcript content from title, comments, thumbnail, or summary.
 - Do not bypass login, private videos, region locks, paid content, or disabled captions.
 - Do not download video/audio as a workaround.
+- Do not run OCR or audio transcription on music videos as a workaround.
+- Do not invent lyrics from the title, description, thumbnail, or comments.
+- Do not reproduce full song lyrics. If a user provides a short excerpt, keep quoted lyrics brief and focus on explanation, vocabulary, grammar, and practice tasks.
 
 ## Fallback Message
 
@@ -24,6 +38,16 @@ Use this Chinese fallback:
 
 ```text
 我暂时无法直接读取这条视频的完整字幕。你可以粘贴 YouTube 字幕、上传 SRT/VTT 字幕，或复制视频文稿，我会继续帮你生成学习包。
+```
+
+## Clear Music Video Fallback
+
+Use this clearer Chinese fallback for music videos and normal user-facing replies:
+
+```text
+我暂时无法直接读取这条 YouTube 视频的公开字幕。很多日语歌的视频只有画面歌词或关闭了字幕轨，YouTube 不会把它们暴露成可读取字幕。
+
+最快方式：打开 YouTube 的“显示文字稿/Transcript”，复制字幕贴给我；或者上传 SRT/VTT。我拿到文字后会直接生成 N3-N2 学习包、假名、中文意思、句子拆解、跟读稿、小测验和 Anki CSV。
 ```
 
 Then offer the next action:
