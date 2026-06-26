@@ -4,7 +4,7 @@
 
 使用说明页：
 
-[https://estherliu-lab.github.io/nihongo-mouthpiece/](https://estherliu-lab.github.io/nihongo-mouthpiece/)
+[https://estherliu-lab.github.io/shadow-speak-skill/](https://estherliu-lab.github.io/shadow-speak-skill/)
 
 说明页支持中文、English、日本語三种语言切换，包含用途、适合人群、使用方法、输入输出和 YouTube 读取限制。
 

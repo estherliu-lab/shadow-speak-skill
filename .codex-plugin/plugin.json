@@ -6,8 +6,8 @@
     "name": "Esther Liu Lab",
     "url": "https://github.com/estherliu-lab"
   },
-  "homepage": "https://estherliu-lab.github.io/nihongo-mouthpiece/",
-  "repository": "https://github.com/estherliu-lab/nihongo-mouthpiece",
+  "homepage": "https://estherliu-lab.github.io/shadow-speak-skill/",
+  "repository": "https://github.com/estherliu-lab/shadow-speak-skill",
   "license": "MIT",
   "keywords": ["language-learning", "youtube", "shadowing", "english", "japanese", "anki"],
   "skills": "./SKILL.md",
@@ -18,7 +18,7 @@
     "developerName": "Esther Liu Lab",
     "category": "Education",
     "capabilities": ["Read", "Write", "Export"],
-    "websiteURL": "https://estherliu-lab.github.io/nihongo-mouthpiece/",
+    "websiteURL": "https://estherliu-lab.github.io/shadow-speak-skill/",
     "defaultPrompt": [
       "把这段 YouTube 字幕做成影子跟读学习包。",
       "帮我拆解这段英文并生成 Anki CSV。",
