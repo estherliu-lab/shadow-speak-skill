@@ -38,8 +38,9 @@ When the user provides a YouTube URL:
 
 This rule overrides the slower YouTube workflow above when a user simply wants a YouTube video recognized quickly.
 
-1. Do one fast public-caption attempt first. Prefer:
-   `scripts/youtube_transcript_fetcher.py <url> --json --timeout 8`
+0. Default to the fastest reliable path: ask for pasted Transcript/SRT/VTT when only a YouTube URL is provided and the environment would require a network or permission prompt. Do not trigger repeated permission requests by default.
+1. If public network access is already available, do one fast public-caption attempt. Prefer:
+   `scripts/youtube_transcript_fetcher.py <url> --json --timeout 5`
    - The script checks the watch page caption metadata and the public `timedtext` caption list.
    - Default language priority is Japanese first, then English.
    - Do not show the user every internal probe unless they ask for debugging details.
@@ -48,8 +49,9 @@ This rule overrides the slower YouTube workflow above when a user simply wants a
    `我暂时无法直接读取这条 YouTube 视频的公开字幕。你可以粘贴 YouTube 字幕、上传 SRT/VTT 字幕，或复制视频文稿；我会继续帮你生成学习包。`
    Then give one short next step:
    `最快方式：打开 YouTube 的“显示文字稿/Transcript”，复制字幕贴给我。`
-4. For music videos and songs, be extra clear: many lyrics are embedded in the video, disabled as captions, or not exposed as public caption tracks. Do not download audio/video, run OCR, or invent lyrics. Do not reproduce full song lyrics unless the user provides a short excerpt that is allowed for learning; keep lyric quotation brief and transform it into explanations, vocabulary, and practice tasks.
-5. Then generate the requested learning mode from the accessible or user-provided text.
+4. If the user explicitly says "try fetching captions" or "try the YouTube link", make only one quick attempt. If it fails, do not continue probing through browser/page/metadata fallbacks unless the user asks for debugging.
+5. For music videos and songs, be extra clear: many lyrics are embedded in the video, disabled as captions, or not exposed as public caption tracks. Do not download audio/video, run OCR, or invent lyrics. Do not reproduce full song lyrics unless the user provides a short excerpt that is allowed for learning; keep lyric quotation brief and transform it into explanations, vocabulary, and practice tasks.
+6. Then generate the requested learning mode from the accessible or user-provided text.
 
 ## Input Detection
 

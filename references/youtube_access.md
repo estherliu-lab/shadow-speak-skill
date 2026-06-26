@@ -8,7 +8,7 @@ Try only accessible information:
 
 1. Public page title and description.
 2. Visible transcript text if the browsing environment exposes it.
-3. Public caption metadata through `scripts/youtube_transcript_fetcher.py <url> --json --timeout 8`.
+3. Public caption metadata through `scripts/youtube_transcript_fetcher.py <url> --json --timeout 5`, only when the user explicitly asks to try fetching or network access is already available.
 4. User-provided captions, SRT, VTT, or copied transcript.
 
 ## Fast Recognition Rule
@@ -19,6 +19,8 @@ For a plain YouTube link, make one quick caption attempt first. The helper check
 - YouTube public `timedtext` track list
 
 If it succeeds, continue directly to the learning package. If it fails, do not keep trying multiple unrelated routes in front of the user. Give the fallback and ask for pasted captions/SRT/VTT.
+
+If the environment would require a network permission prompt, default to the pasted Transcript/SRT/VTT path instead of asking for permission automatically. The user can still explicitly request one public-caption attempt.
 
 For Japanese videos, prefer Japanese captions before English captions. For songs and music videos, be clear that lyrics are often not exposed as public caption tracks even when text appears on screen.
 

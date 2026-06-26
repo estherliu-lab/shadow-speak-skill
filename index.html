@@ -276,6 +276,25 @@
       padding-left: 18px;
     }
 
+    .notice {
+      border: 1px solid #d9b36d;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: var(--soft-amber);
+    }
+
+    .notice strong {
+      color: var(--amber);
+    }
+
+    .notice + .notice {
+      margin-top: 10px;
+    }
+
+    .notice + h2 {
+      margin-top: 24px;
+    }
+
     .steps {
       counter-reset: steps;
       display: grid;
@@ -403,6 +422,19 @@
     </section>
 
     <section id="install">
+      <div class="notice" data-copy="zh">
+        <strong>最快最稳的用法：</strong>
+        直接粘贴 YouTube 的“显示文字稿 / Transcript”、SRT/VTT 字幕，或一段你想学习的英文/日文文本。只贴 YouTube 链接时，Skill 只能尝试读取公开视频暴露出来的字幕轨；很多日语歌、MV、AMV 和画面歌词视频没有公开字幕轨，无法自动生成学习包。
+      </div>
+      <div class="notice" data-copy="en">
+        <strong>Fastest reliable workflow:</strong>
+        Paste the YouTube Transcript, SRT/VTT captions, or the text you want to study. A bare YouTube link only works when YouTube exposes a public caption track; many songs, MVs, AMVs, and burned-in lyric videos do not.
+      </div>
+      <div class="notice" data-copy="ja">
+        <strong>一番安定した使い方：</strong>
+        YouTube の Transcript、SRT/VTT 字幕、または学びたい英文・日本語本文を貼り付けてください。YouTube リンクだけの場合、公開字幕トラックがある動画だけ読み取れます。歌、MV、AMV、画面内歌詞だけの動画は失敗することが多いです。
+      </div>
+
       <h2 data-copy="zh">下载和安装</h2>
       <h2 data-copy="en">Download And Install</h2>
       <h2 data-copy="ja">ダウンロードとインストール</h2>
@@ -555,7 +587,7 @@ After installation, tell me how to restart Codex and test it.</code></pre>
           <h3 data-copy="en">Inputs</h3>
           <h3 data-copy="ja">入力</h3>
           <ul>
-            <li>YouTube URL</li>
+            <li>YouTube URL with public captions</li>
             <li>SRT / VTT captions</li>
             <li>English / Japanese text</li>
             <li>Chinese ideas for expression</li>

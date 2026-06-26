@@ -106,8 +106,8 @@ def find_caption_tracks(page_html: str) -> list[dict]:
     return []
 
 
-def timedtext_track_list(video_id: str) -> list[dict]:
-    xml_text = fetch_url(TIMEDTEXT_LIST_URL.format(video_id=video_id))
+def timedtext_track_list(video_id: str, timeout: int = 5) -> list[dict]:
+    xml_text = fetch_url(TIMEDTEXT_LIST_URL.format(video_id=video_id), timeout=timeout)
     try:
         root = ET.fromstring(xml_text)
     except ET.ParseError:
@@ -139,10 +139,10 @@ def timedtext_track_list(video_id: str) -> list[dict]:
     return tracks
 
 
-def find_public_caption_tracks(video_id: str, page_html: str) -> list[dict]:
+def find_public_caption_tracks(video_id: str, page_html: str, timeout: int = 5) -> list[dict]:
     tracks = find_caption_tracks(page_html)
     seen = {track.get("baseUrl", "") for track in tracks}
-    for track in timedtext_track_list(video_id):
+    for track in timedtext_track_list(video_id, timeout=timeout):
         if track.get("baseUrl") not in seen:
             tracks.append(track)
             seen.add(track.get("baseUrl", ""))
@@ -218,14 +218,14 @@ def main() -> int:
     parser.add_argument("--lang", action="append", default=[], help="Preferred caption language")
     parser.add_argument("--list", action="store_true", help="List public caption tracks and exit")
     parser.add_argument("--json", action="store_true", help="Print machine-readable status JSON")
-    parser.add_argument("--timeout", type=int, default=10, help="Network timeout in seconds")
+    parser.add_argument("--timeout", type=int, default=5, help="Network timeout in seconds")
     args = parser.parse_args()
     languages = args.lang or DEFAULT_LANGS
 
     try:
         video_id = extract_video_id(args.url_or_id)
         page = fetch_url(WATCH_URL.format(video_id=video_id), timeout=args.timeout)
-        tracks = find_public_caption_tracks(video_id, page)
+        tracks = find_public_caption_tracks(video_id, page, timeout=args.timeout)
         if args.list:
             if not tracks:
                 print(
