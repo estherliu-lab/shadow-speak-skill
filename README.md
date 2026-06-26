@@ -109,6 +109,56 @@ Front,Back,Tags
 "I later realized that...","我后来才意识到...|表达认知变化|I later realized that practice matters more than speed.|english,B1,reflection"
 ```
 
+### 完整案例：一段字幕如何变成学习包
+
+这个案例适合放在介绍页里给第一次看到项目的用户理解：用户只需要贴一段字幕，Skill 会把它变成可以跟读、复习、测试和导出的学习资料。
+
+**用户输入**
+
+```text
+$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+
+When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.
+```
+
+**Skill 处理过程**
+
+1. 判断语言和难度：英语，短字幕/学习反思类内容，适合 B1-B2。
+2. 提取核心表达：`progress meant...`、`Later I realized that...`、`only become useful when...`。
+3. 拆解句子：解释自然意思、结构、语气和可替换表达。
+4. 生成跟读稿：用 `/` 标出停顿，用 `**bold**` 标出重音。
+5. 生成复习材料：5 分钟复习卡、小测验、答案解析、Anki CSV。
+
+**学习包输出片段**
+
+```markdown
+## 输入识别
+- 学习语言：英语
+- 内容类型：短字幕 / 个人学习反思
+- 适合等级：B1-B2
+
+## 重点句子拆解
+原句：Later I realized that words only become useful when I can use them in a real situation.
+中文意思：后来我才明白，单词要能在真实场景里用出来，才算真的有用。
+结构：Later I realized that... + words only become useful when...
+可替换表达：I eventually understood that words are useful only when they work in real life.
+
+## 影子跟读
+**Later** I **realized** that / words only become **useful** / when I can **use them** / in a **real situation**.
+
+## 复述任务
+用 “Later I realized that...” 说一个你后来才明白的学习道理。
+```
+
+**Anki CSV 是可选导出**
+
+Anki 是一款间隔重复记忆卡片软件。普通用户不用安装 Anki 也能直接看学习包练习；已经使用 Anki 的用户，可以把 CSV 导入成卡片长期复习。
+
+```csv
+Front,Back,Tags
+"Later I realized that...","后来我意识到……|引出认知转变|Later I realized that speaking takes daily practice.|english,B1-B2,pattern"
+```
+
 ### 更多可直接测试的提示词
 
 ```text

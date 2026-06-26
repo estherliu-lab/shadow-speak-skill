@@ -687,6 +687,35 @@ Original: Later I realized that words only become useful when I can use them in 
 
 ## 音読
 Later I **realized** / that words only become **useful** / when I can use them / in a real **situation**.</code></pre>
+      <div class="panel" data-copy="zh" style="margin-top:14px;">
+        <h3>清晰中文案例：字幕到学习包</h3>
+        <p><strong>用户输入：</strong>贴一段英文字幕，并要求生成影子跟读学习包和 Anki CSV。</p>
+        <p><strong>Skill 处理：</strong>判断英语 B1-B2 难度，提取 <code>progress meant...</code>、<code>Later I realized that...</code>、<code>only become useful when...</code>，再拆解句子结构、语气、停顿和重音。</p>
+        <p><strong>学习包输出：</strong>中文摘要、重点表达、句子拆解、慢速/自然/情绪模仿跟读稿、5 分钟复习卡、小测验、答案解析和打卡文案。</p>
+        <p><strong>Anki CSV：</strong>这是给已经使用 Anki 的用户准备的可选导出。普通用户不用安装 Anki，也可以直接看学习包练习；Anki 用户可以导入 CSV，把句子变成长期复习卡。</p>
+      </div>
+      <pre data-copy="zh"><code># 用户输入
+$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+
+When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.
+
+# 输出片段
+## 输入识别
+- 学习语言：英语
+- 内容类型：短字幕 / 个人学习反思
+- 适合等级：B1-B2
+
+## 重点句子拆解
+原句：Later I realized that words only become useful when I can use them in a real situation.
+中文意思：后来我才明白，单词要能在真实场景里用出来，才算真的有用。
+结构：Later I realized that... + words only become useful when...
+
+## 影子跟读
+**Later** I **realized** that / words only become **useful** / when I can **use them** / in a **real situation**.
+
+## Anki CSV
+Front,Back,Tags
+"Later I realized that...","后来我意识到……|引出认知转变|Later I realized that speaking takes daily practice.|english,B1-B2,pattern"</code></pre>
     </section>
 
     <section>
