@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日语开口急救包</title>
+  <meta name="description" content="把中文想法变成自然日语。适合日语开口、语感校准、生活场景表达和每日一句练习。">
+  <style>
+    :root {
+      --bg: #fbf7ef;
+      --paper: #fffdf8;
+      --paper-strong: #fffaf0;
+      --ink: #2f2f2f;
+      --muted: #716a60;
+      --green: #627f57;
+      --green-soft: #edf2e7;
+      --peach: #e8a87c;
+      --pink: #eeb7a5;
+      --line: #e8dccb;
+      --shadow: 0 16px 42px rgba(87, 70, 45, .11);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(127,155,118,.08) 1px, transparent 1px),
+        linear-gradient(rgba(127,155,118,.06) 1px, transparent 1px),
+        radial-gradient(circle at 18% 8%, #fff4dd 0, transparent 30%),
+        linear-gradient(135deg, #fbf7ef 0%, #f7efe4 100%);
+      background-size: 42px 42px, 42px 42px, auto, auto;
+      font-family: ui-serif, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      background: linear-gradient(145deg, var(--peach), var(--pink));
+      box-shadow: 0 10px 24px rgba(95, 127, 88, .16);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border-radius: 8px;
+      padding: 9px 16px;
+      color: #fff;
+      background: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+    }
+
+    .button.secondary {
+      color: var(--green);
+      background: rgba(255,253,248,.9);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .qr-card,
+    .card,
+    .demo {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,253,248,.92);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: clamp(24px, 4.8vw, 48px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 11px;
+      margin-bottom: 16px;
+      color: var(--green);
+      background: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 1.04;
+      font-weight: 800;
+    }
+
+    .lead {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: clamp(20px, 3vw, 29px);
+      font-weight: 700;
+    }
+
+    .sub {
+      width: min(690px, 100%);
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .point {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .point b {
+      display: block;
+      color: var(--green);
+      margin-bottom: 3px;
+    }
+
+    .point span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .qr-card {
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .qr-card img {
+      width: 172px;
+      height: 172px;
+      display: block;
+      margin: 0 auto;
+      border: 8px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(83, 69, 48, .1);
+    }
+
+    .qr-card h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .qr-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .url {
+      display: block;
+      width: 100%;
+      overflow-wrap: anywhere;
+      color: var(--green);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 12px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 34px);
+      line-height: 1.2;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 7px;
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .example {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      padding: 3px 8px;
+      color: var(--green);
+      background: var(--green-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .cn {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .jp {
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .demo {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 16px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 136px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .demo h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+
+    .demo p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--green);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    button.secondary {
+      border: 1px solid var(--line);
+      color: var(--green);
+      background: #fff;
+    }
+
+    .result {
+      display: grid;
+      gap: 10px;
+    }
+
+    .result-line {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      background: #fff;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .top-actions { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .qr-card {
+        display: grid;
+        grid-template-columns: 136px 1fr;
+        text-align: left;
+        align-items: center;
+      }
+      .qr-card img {
+        width: 132px;
+        height: 132px;
+      }
+      .hero-points,
+      .cards,
+      .examples,
+      .demo {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        display: block;
+      }
+      .section-title p {
+        margin-top: 4px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+      .brand strong { font-size: 19px; }
+      .logo { width: 42px; height: 42px; }
+      .hero-main,
+      .qr-card,
+      .card,
+      .demo {
+        box-shadow: 0 10px 26px rgba(83, 69, 48, .1);
+      }
+      .qr-card {
+        grid-template-columns: 112px 1fr;
+        gap: 12px;
+        padding: 14px;
+      }
+      .qr-card img {
+        width: 108px;
+        height: 108px;
+        border-width: 6px;
+      }
+      .qr-card h2 { font-size: 20px; }
+      .jp { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">日</div>
+        <div>
+          <strong>日语开口急救包</strong>
+          <span>Nihongo Mouthpiece</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="button secondary" href="#how">怎么用</a>
+        <a class="button" href="#try">试一句</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-main">
+          <span class="eyebrow">给中文母语者的日语嘴替</span>
+          <h1>日语开口急救包</h1>
+          <p class="lead">把中文想法，变成自然日语。</p>
+          <p class="sub">不是硬翻译，也不是背课本句型。它帮你把“我真正想说的话”改成更自然、更柔和、更适合真实沟通的日语，还会告诉你为什么这样说更顺。</p>
+
+          <div class="hero-points">
+            <div class="point">
+              <b>开口不再卡住</b>
+              <span>先拿到一句能直接说出口的日语。</span>
+            </div>
+            <div class="point">
+              <b>修掉翻译腔</b>
+              <span>看懂哪里生硬，慢慢养出语感。</span>
+            </div>
+            <div class="point">
+              <b>生活里用得上</b>
+              <span>覆盖预约、租房、学校、职场等场景。</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="qr-card" aria-label="二维码">
+          <img alt="扫码打开日语开口急救包" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Festherliu-lab.github.io%2Fnihongo-mouthpiece%2F">
+          <div>
+            <h2>扫码打开使用界面</h2>
+            <p>手机扫码后，可以收藏网页或添加到主屏幕，随时练一句。</p>
+            <a class="url" href="https://estherliu-lab.github.io/nihongo-mouthpiece/">estherliu-lab.github.io/nihongo-mouthpiece</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="how">
+        <div class="section-title">
+          <h2>它适合这样用</h2>
+          <p>从“想表达”到“能说出口”，中间少一点卡顿。</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>我想说</h3>
+            <p>输入一句中文，比如“我不是不想去，只是最近有点累”，得到自然版、口语版、礼貌版和更委婉版。</p>
+          </article>
+          <article class="card">
+            <h3>语感校准</h3>
+            <p>把自己写的日语放进去，检查它是否太直、太硬、太像中文翻译，并得到更自然的改法。</p>
+          </article>
+          <article class="card">
+            <h3>生活场景</h3>
+            <p>在医院、幼儿园、租房、电话预约、餐厅点餐、工作沟通时，快速找到合适的表达。</p>
+          </article>
+          <article class="card">
+            <h3>情绪表达</h3>
+            <p>把感谢、抱歉、拒绝、疲惫、想重新开始，说得更温柔、更克制，也更容易被理解。</p>
+          </article>
+          <article class="card">
+            <h3>每日一句</h3>
+            <p>每天记一句真正能用出去的日语，配中文意思、语感提示和替换练习，适合打卡复习。</p>
+          </article>
+          <article class="card">
+            <h3>中日双语</h3>
+            <p>适合写小红书、朋友圈、视频口播、学习笔记，把中文内容改成自然的中日双语表达。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>几个真实感案例</h2>
+          <p>重点不是逐字翻译，而是让语气变自然。</p>
+        </div>
+        <div class="examples">
+          <div class="example">
+            <span class="label">疲惫但想继续</span>
+            <div class="cn">中文：最近有点累，但还是想继续努力。</div>
+            <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
+          </div>
+          <div class="example">
+            <span class="label">委婉拒绝</span>
+            <div class="cn">中文：我不是不想去，只是最近有点累。</div>
+            <div class="jp">行きたくないわけじゃなくて、最近ちょっと疲れていて。</div>
+          </div>
+          <div class="example">
+            <span class="label">不想麻烦别人</span>
+            <div class="cn">中文：我不想麻烦你。</div>
+            <div class="jp">ご迷惑をおかけしたくなくて。</div>
+          </div>
+          <div class="example">
+            <span class="label">重新开始</span>
+            <div class="cn">中文：我想重新开始。</div>
+            <div class="jp">もう一度、少しずつ始めてみたいです。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section demo" id="try">
+        <div>
+          <h2>试一句</h2>
+          <p>先看一个示例。真正使用时，把这里换成你自己的中文想法。</p>
+          <textarea id="source">最近有点累，但还是想继续努力。</textarea>
+          <div class="actions">
+            <button id="show">查看示例表达</button>
+            <button class="secondary" id="copy">复制推荐句</button>
+          </div>
+        </div>
+
+        <div class="result" id="result">
+          <div class="result-line">
+            <span class="label">自然日语版</span>
+            <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
+          </div>
+          <div class="result-line">
+            <span class="label">更口语版</span>
+            <div class="jp">最近ちょっと疲れてるけど、もう少し頑張ってみようかな。</div>
+          </div>
+          <div class="result-line">
+            <span class="label">语感提示</span>
+            <div>「疲れ気味」比直接说「疲れている」更柔和，适合表达“有点累，但还想继续”的状态。</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>今天先记住一句能说出口的日语。</footer>
+  </div>
+
+  <script>
+    const recommended = "最近少し疲れ気味だけど、もう少しだけ続けてみたい。";
+    const result = document.getElementById("result");
+    const show = document.getElementById("show");
+    const copy = document.getElementById("copy");
+
+    show.addEventListener("click", () => {
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    copy.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(recommended);
+      copy.textContent = "已复制";
+      setTimeout(() => {
+        copy.textContent = "复制推荐句";
+      }, 1300);
+    });
+  </script>
+</body>
+</html>

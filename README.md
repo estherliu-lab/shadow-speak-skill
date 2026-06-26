@@ -12,8 +12,6 @@
 
 [https://estherliu-lab.github.io/nihongo-mouthpiece/](https://estherliu-lab.github.io/nihongo-mouthpiece/)
 
-如果这个链接暂时打不开，需要先在仓库 Settings 里开启 Pages：`main` / `/docs`。
-
 ## 它有什么用
 
 很多时候，我们不是完全不会日语，而是脑子里有一句中文，开口时不知道怎样说才自然。
