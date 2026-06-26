@@ -1,3 +1,3 @@
-display_name: 日语开口急救包
-short_description: 把中文想法变成自然日语的温柔实用教练。
-default_prompt: 帮我把这句中文变成自然日语，并说明语感差异。
+display_name: Shadow Speak / 影子跟读
+short_description: 把 YouTube 字幕、英文和日文内容拆成可跟读、复习和导出的学习包。
+default_prompt: 帮我把这段视频字幕做成影子跟读学习包，并生成 Anki CSV。

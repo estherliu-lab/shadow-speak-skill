@@ -1,73 +1,75 @@
-# 日语开口急救包
+# Shadow Speak Skill / 影子跟读 Skill / シャドー音読スキル
 
-把中文想法，变成自然日语。
+把 YouTube 链接、字幕、SRT/VTT、英文或日文文章，拆成可以朗读、跟读、复习、导出和打卡的语言学习资料。
 
-> 给中文母语者的日语嘴替：不是硬翻译，而是帮你把“我真正想说的话”改成更自然、更柔和、更适合真实沟通的日语。
-
-## 扫码打开
-
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Festherliu-lab.github.io%2Fnihongo-mouthpiece%2F" width="180" alt="日语开口急救包二维码">
-
-使用界面：
+使用说明页：
 
 [https://estherliu-lab.github.io/nihongo-mouthpiece/](https://estherliu-lab.github.io/nihongo-mouthpiece/)
 
-## 它有什么用
+说明页支持中文、English、日本語三种语言切换，包含用途、适合人群、使用方法、输入输出和 YouTube 读取限制。
 
-很多时候，我们不是完全不会日语，而是脑子里有一句中文，开口时不知道怎样说才自然。
+## 它适合谁
 
-日语开口急救包专门处理这种卡住的时刻：
+- 想用 YouTube 学英语或日语，但不知道怎么拆字幕的人
+- 想练 shadowing、朗读节奏、重音和语气的人
+- 想把文章或台词变成 Anki 卡片和复习包的人
+- 想准备 JLPT、IELTS、TOEFL 或商务英语表达的人
+- 想每天输出学习打卡内容的人
 
-- 想表达，但不想说成生硬直译
-- 语法好像没错，但听起来不够自然
-- 想拒绝、感谢、道歉，却怕太直接
-- 在日本生活场景里，需要一句能马上用的话
-- 想每天积累一句真正能说出口的日语
+## 支持输入
 
-## 你可以这样用
+- YouTube 链接
+- YouTube 字幕文本
+- SRT 字幕
+- VTT 字幕
+- 英文文章、句子或自己写的英文
+- 日文文章、句子或自己写的日文
+- 中文句子，例如“这句话英语和日语怎么自然表达”
 
-1. 输入一句中文想法。
-2. 查看自然日语版、口语版、礼貌版和委婉版。
-3. 读一下语感说明，知道为什么这样改。
-4. 复制最适合的一句，用在聊天、笔记、打卡或真实沟通里。
+## 支持输出
 
-## 示例
+- 视频精学学习包
+- 影子跟读朗读稿
+- 句子拆解和自然替代表达
+- CEFR / JLPT / IELTS / TOEFL 学习建议
+- Anki CSV
+- 5 分钟复习卡
+- 小测验和答案解析
+- 朋友圈、小红书、X、学习群打卡文案
 
-### 疲惫但想继续
+## YouTube 读取限制
 
-中文：
+这个 skill 可以尝试读取公开可访问的 YouTube 字幕或页面可见文稿，但不会绕过平台限制，也不会假装已经读取无法访问的视频内容。
 
-> 最近有点累，但还是想继续努力。
+如果视频没有可访问字幕，请把 YouTube 字幕、SRT/VTT 文件或视频文稿粘贴给 Codex。Skill 会继续清理文本并生成学习包。
 
-自然日语：
+## 脚本
 
-> 最近少し疲れ気味だけど、もう少しだけ続けてみたい。
+```bash
+python scripts/youtube_transcript_fetcher.py "https://www.youtube.com/watch?v=VIDEO_ID" transcript.txt
+python scripts/subtitle_cleaner.py tests/sample_srt.srt cleaned.txt
+python scripts/anki_csv_exporter.py tests/sample_cards.json cards.csv
+python scripts/markdown_exporter.py learning_pack.md --topic "morning routine"
+```
 
-### 委婉拒绝
+## 可直接测试的提示词
 
-中文：
+```text
+用影子跟读 Skill 帮我拆解这段日语字幕，适合 N3-N2 学习者。
+```
 
-> 我不是不想去，只是最近有点累。
+```text
+帮我把这段英文做成 shadowing 练习，解释用中文，并生成 Anki CSV。
+```
 
-自然日语：
+```text
+这条 YouTube 视频我想学英语。如果你无法读取字幕，请提示我粘贴字幕。
+```
 
-> 行きたくないわけじゃなくて、最近ちょっと疲れていて。
+```text
+用电影字幕老师模式拆解这段英文台词，重点讲语气和潜台词。
+```
 
-### 不想麻烦别人
-
-中文：
-
-> 我不想麻烦你。
-
-自然日语：
-
-> ご迷惑をおかけしたくなくて。
-
-## 适合练习的内容
-
-- 我想说：把中文想法变成自然日语
-- 语感校准：修正太硬、太直、太像翻译的日语
-- 生活场景：医院、幼儿园、租房、餐厅、电话预约、职场沟通
-- 情绪表达：感谢、拒绝、抱歉、疲惫、重新开始
-- 每日一句：每天记住一句能用出去的日语
-- 中日双语：适合笔记、朋友圈、小红书、视频口播
+```text
+这句话用英语和日语怎么自然表达？给我朋友聊天版、正式版、社交媒体版。
+```

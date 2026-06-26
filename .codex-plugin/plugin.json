@@ -1,0 +1,29 @@
+{
+  "name": "shadow-speak-skill",
+  "version": "1.0.0",
+  "description": "Turn English or Japanese video transcripts, subtitles, articles, and sentences into shadowing and review materials.",
+  "author": {
+    "name": "Esther Liu Lab",
+    "url": "https://github.com/estherliu-lab"
+  },
+  "homepage": "https://estherliu-lab.github.io/nihongo-mouthpiece/",
+  "repository": "https://github.com/estherliu-lab/nihongo-mouthpiece",
+  "license": "MIT",
+  "keywords": ["language-learning", "youtube", "shadowing", "english", "japanese", "anki"],
+  "skills": "./SKILL.md",
+  "interface": {
+    "displayName": "Shadow Speak / 影子跟读",
+    "shortDescription": "Turn video text into speaking practice, review cards, and study notes.",
+    "longDescription": "Shadow Speak helps English and Japanese learners convert YouTube captions, SRT/VTT subtitles, articles, and sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. It tries only accessible transcript sources and asks users to paste captions when video text is unavailable.",
+    "developerName": "Esther Liu Lab",
+    "category": "Education",
+    "capabilities": ["Read", "Write", "Export"],
+    "websiteURL": "https://estherliu-lab.github.io/nihongo-mouthpiece/",
+    "defaultPrompt": [
+      "把这段 YouTube 字幕做成影子跟读学习包。",
+      "帮我拆解这段英文并生成 Anki CSV。",
+      "用日文 N3-N2 水平整理这段字幕。"
+    ],
+    "brandColor": "#2F7D6D"
+  }
+}

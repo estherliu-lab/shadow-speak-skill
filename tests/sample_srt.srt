@@ -1,0 +1,11 @@
+1
+00:00:01,000 --> 00:00:04,000
+I thought progress meant memorizing more words.
+
+2
+00:00:04,500 --> 00:00:08,000
+Later I realized that words become useful in real situations.
+
+3
+00:00:08,500 --> 00:00:12,000
+I would rather learn five useful sentences deeply.

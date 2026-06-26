@@ -1,0 +1,12 @@
+[
+  {
+    "front": "I am not fully convinced.",
+    "back": "我还没有完全被说服|委婉表达保留意见|I am not fully convinced this will work.|比直接说 no 更礼貌",
+    "tags": ["english", "B2", "soft-refusal"]
+  },
+  {
+    "front": "それはちょっと難しいかもしれません。",
+    "back": "这个可能有点难|委婉拒绝|今回は対応するのがちょっと難しいかもしれません|ちょっと 在这里缓和语气",
+    "tags": ["japanese", "N3", "polite-expression"]
+  }
+]
