@@ -2,22 +2,25 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>日语开口急救包</title>
-  <meta name="description" content="把中文想法变成自然日语。适合日语开口、语感校准、生活场景表达和每日一句练习。">
+  <meta name="description" content="把中文想法变成自然日语的手机练习工具。">
   <style>
     :root {
-      --bg: #fbf7ef;
+      --bg: #f8f1e5;
       --paper: #fffdf8;
-      --paper-strong: #fffaf0;
-      --ink: #2f2f2f;
-      --muted: #716a60;
-      --green: #627f57;
-      --green-soft: #edf2e7;
-      --peach: #e8a87c;
-      --pink: #eeb7a5;
-      --line: #e8dccb;
-      --shadow: 0 16px 42px rgba(87, 70, 45, .11);
+      --paper-2: #fff8ed;
+      --ink: #312d28;
+      --muted: #756d62;
+      --green: #637f57;
+      --green-2: #86a078;
+      --green-soft: #edf2e8;
+      --peach: #e9a781;
+      --pink: #efb6a7;
+      --gold: #d6b26e;
+      --line: #eadfce;
+      --shadow: 0 18px 44px rgba(87, 70, 45, .12);
+      --radius: 8px;
     }
 
     * { box-sizing: border-box; }
@@ -26,579 +29,1180 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(127,155,118,.08) 1px, transparent 1px),
-        linear-gradient(rgba(127,155,118,.06) 1px, transparent 1px),
-        radial-gradient(circle at 18% 8%, #fff4dd 0, transparent 30%),
-        linear-gradient(135deg, #fbf7ef 0%, #f7efe4 100%);
-      background-size: 42px 42px, 42px 42px, auto, auto;
+        radial-gradient(circle at 15% 8%, rgba(255,255,255,.88), transparent 28%),
+        radial-gradient(circle at 90% 18%, rgba(232,168,124,.22), transparent 22%),
+        linear-gradient(135deg, #fbf7ef 0%, #efe2cf 100%);
       font-family: ui-serif, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
-      line-height: 1.65;
+      line-height: 1.55;
       letter-spacing: 0;
     }
 
-    a { color: inherit; }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 56px;
+    button, textarea, select, input {
+      font: inherit;
     }
 
-    header {
+    button {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .stage {
+      width: min(100%, 470px);
+      min-height: 100vh;
+      margin: 0 auto;
+      background:
+        linear-gradient(90deg, rgba(127,155,118,.05) 1px, transparent 1px),
+        linear-gradient(rgba(127,155,118,.04) 1px, transparent 1px),
+        var(--bg);
+      background-size: 34px 34px, 34px 34px, auto;
+      box-shadow: 0 0 0 1px rgba(232,221,205,.75), 0 22px 60px rgba(56, 42, 25, .14);
+    }
+
+    .app {
+      min-height: 100vh;
+      padding: 14px 14px calc(88px + env(safe-area-inset-bottom));
+    }
+
+    .status {
+      height: 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 26px;
+      justify-content: space-between;
+      padding: 0 4px 0 6px;
+      color: #111;
+      font: 600 14px/1.2 ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .signals {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 16px;
+      height: 10px;
+      border: 2px solid #111;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .dot::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: 2px;
+      width: 3px;
+      height: 4px;
+      border-radius: 1px;
+      background: #111;
+    }
+
+    .bars {
+      width: 18px;
+      height: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      align-items: end;
+    }
+
+    .bars i {
+      display: block;
+      background: #111;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .bars i:nth-child(1) { height: 4px; }
+    .bars i:nth-child(2) { height: 6px; }
+    .bars i:nth-child(3) { height: 9px; }
+    .bars i:nth-child(4) { height: 12px; }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 2px 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius);
       display: grid;
       place-items: center;
       color: #fff;
-      font-weight: 800;
       background: linear-gradient(145deg, var(--peach), var(--pink));
-      box-shadow: 0 10px 24px rgba(95, 127, 88, .16);
+      box-shadow: 0 9px 22px rgba(95,127,88,.16);
+      font-weight: 800;
     }
 
-    .brand strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1.15;
+    .brand h1 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.12;
     }
 
-    .brand span {
-      display: block;
+    .brand p {
+      margin: 2px 0 0;
       color: var(--muted);
       font-size: 13px;
     }
 
-    .top-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      border-radius: 8px;
-      padding: 9px 16px;
-      color: #fff;
-      background: var(--green);
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
-    }
-
-    .button.secondary {
-      color: var(--green);
-      background: rgba(255,253,248,.9);
+    .icon-btn {
+      width: 42px;
+      height: 42px;
       border: 1px solid var(--line);
-      box-shadow: none;
-    }
-
-    .hero {
+      border-radius: var(--radius);
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 310px;
-      gap: 22px;
-      align-items: stretch;
+      place-items: center;
+      color: var(--green);
+      background: rgba(255,253,248,.82);
     }
 
-    .hero-main,
-    .qr-card,
-    .card,
-    .demo {
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .panel {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255,253,248,.92);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.9);
       box-shadow: var(--shadow);
+      padding: 14px;
     }
 
-    .hero-main {
-      padding: clamp(24px, 4.8vw, 48px);
+    .compose {
       position: relative;
       overflow: hidden;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 5px 11px;
-      margin-bottom: 16px;
-      color: var(--green);
-      background: #fff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(38px, 7vw, 68px);
-      line-height: 1.04;
-      font-weight: 800;
-    }
-
-    .lead {
-      margin: 0 0 12px;
-      color: var(--green);
-      font-size: clamp(20px, 3vw, 29px);
-      font-weight: 700;
-    }
-
-    .sub {
-      width: min(690px, 100%);
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .point {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
-      background: #fff;
-    }
-
-    .point b {
-      display: block;
-      color: var(--green);
-      margin-bottom: 3px;
-    }
-
-    .point span {
-      display: block;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .qr-card {
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .qr-card img {
-      width: 172px;
-      height: 172px;
-      display: block;
-      margin: 0 auto;
-      border: 8px solid #fff;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(83, 69, 48, .1);
-    }
-
-    .qr-card h2 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.2;
-    }
-
-    .qr-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .url {
-      display: block;
-      width: 100%;
-      overflow-wrap: anywhere;
-      color: var(--green);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .section {
-      margin-top: 22px;
+    .compose::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -1px;
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(135deg, transparent 0 49%, var(--green) 50%);
+      opacity: .9;
+      pointer-events: none;
     }
 
     .section-title {
       display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin: 0 0 12px;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 800;
     }
 
-    .section-title h2 {
-      margin: 0;
-      font-size: clamp(25px, 4vw, 34px);
-      line-height: 1.2;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      padding: 18px;
-    }
-
-    .card h3 {
-      margin: 0 0 7px;
-      color: var(--green);
-      font-size: 20px;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .examples {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .example {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-      background: #fff;
-    }
-
-    .label {
-      display: inline-block;
-      margin-bottom: 8px;
-      border-radius: 6px;
-      padding: 3px 8px;
-      color: var(--green);
-      background: var(--green-soft);
-      font-size: 13px;
+    .hint-pill {
+      border-radius: 999px;
+      background: #fff0dc;
+      color: #9b6b34;
+      padding: 4px 10px;
+      font-size: 12px;
       font-weight: 700;
-    }
-
-    .cn {
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .jp {
-      font-size: 19px;
-      line-height: 1.7;
-    }
-
-    .demo {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-      gap: 16px;
     }
 
     textarea {
       width: 100%;
-      min-height: 136px;
+      min-height: 126px;
       resize: vertical;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
+      border-radius: var(--radius);
       background: #fff;
       color: var(--ink);
-      font: inherit;
+      padding: 14px;
+      box-shadow: inset 0 1px 6px rgba(80, 61, 37, .04);
+      outline: none;
     }
 
-    .demo h2 {
-      margin: 0 0 8px;
-      font-size: 26px;
+    textarea:focus, select:focus {
+      border-color: rgba(99,127,87,.55);
+      box-shadow: 0 0 0 3px rgba(99,127,87,.12);
     }
 
-    .demo p {
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
-
-    .actions {
+    .helper {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    button {
+    .primary {
+      min-height: 46px;
       border: 0;
-      border-radius: 8px;
-      padding: 10px 16px;
+      border-radius: var(--radius);
+      padding: 0 18px;
       color: #fff;
-      background: var(--green);
-      cursor: pointer;
-      font: inherit;
+      background: linear-gradient(180deg, #79956c, var(--green));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.22), 0 8px 16px rgba(83,106,74,.22);
+      font-weight: 800;
+    }
+
+    .secondary {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      color: var(--green);
+      background: #fff;
       font-weight: 700;
     }
 
-    button.secondary {
-      border: 1px solid var(--line);
-      color: var(--green);
-      background: #fff;
+    .center-action {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
     }
 
-    .result {
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,253,248,.66);
+    }
+
+    .tab {
+      min-height: 40px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 800;
+    }
+
+    .tab.active {
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 5px 12px rgba(83,106,74,.22);
+    }
+
+    .modes {
+      margin: 18px 0 14px;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mode-card {
+      min-height: 104px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.82);
+      padding: 10px 8px;
+      text-align: center;
+      color: var(--ink);
+    }
+
+    .mode-card.active {
+      border-color: rgba(99,127,87,.78);
+      background: #fbfff7;
+      box-shadow: inset 0 0 0 1px rgba(99,127,87,.2);
+    }
+
+    .mode-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 7px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 18px;
+    }
+
+    .mode-card b {
+      display: block;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .mode-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .result-panel {
+      margin-top: 14px;
+    }
+
+    .result-list {
       display: grid;
       gap: 10px;
     }
 
-    .result-line {
+    .result-card {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 13px;
+      border-radius: var(--radius);
       background: #fff;
+      padding: 12px;
     }
 
-    footer {
-      margin-top: 28px;
+    .result-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 6px;
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag.peach {
+      background: #fff0dc;
+      color: #a46b37;
+    }
+
+    .jp {
+      font-size: 18px;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .cn {
       color: var(--muted);
-      text-align: center;
       font-size: 14px;
     }
 
-    @media (max-width: 920px) {
-      .top-actions { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .qr-card {
-        display: grid;
-        grid-template-columns: 136px 1fr;
-        text-align: left;
-        align-items: center;
-      }
-      .qr-card img {
-        width: 132px;
-        height: 132px;
-      }
-      .hero-points,
-      .cards,
-      .examples,
-      .demo {
-        grid-template-columns: 1fr;
-      }
-      .section-title {
-        display: block;
-      }
-      .section-title p {
-        margin-top: 4px;
-      }
+    .mini-actions {
+      display: flex;
+      gap: 6px;
+      flex: 0 0 auto;
     }
 
-    @media (max-width: 560px) {
-      .wrap {
-        width: min(100% - 22px, 1120px);
-        padding-top: 18px;
+    .mini {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      background: #fffdf8;
+    }
+
+    .note {
+      border-left: 3px solid var(--green-2);
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: #fbfff7;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .scene-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    select {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      padding: 0 10px;
+      outline: none;
+      min-width: 0;
+    }
+
+    .daily-card {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .daily-card::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 50% 50%, #fff 0 13%, transparent 14%),
+        radial-gradient(circle at 50% 18%, #efb6a7 0 15%, transparent 16%),
+        radial-gradient(circle at 80% 50%, #efb6a7 0 15%, transparent 16%),
+        radial-gradient(circle at 50% 80%, #efb6a7 0 15%, transparent 16%),
+        radial-gradient(circle at 20% 50%, #efb6a7 0 15%, transparent 16%),
+        #f7d8c3;
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    .daily-main {
+      position: relative;
+      z-index: 1;
+      padding-right: 46px;
+    }
+
+    .practice-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .practice-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 9px 10px;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .empty {
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255,253,248,.64);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(100%, 470px);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      background: rgba(255,253,248,.95);
+      backdrop-filter: blur(12px);
+      z-index: 20;
+    }
+
+    .nav-btn {
+      min-height: 54px;
+      border: 0;
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .nav-btn i {
+      display: block;
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .nav-btn.active {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(84px + env(safe-area-inset-bottom));
+      transform: translate(-50%, 18px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 30;
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: #fff;
+      background: rgba(49,45,40,.88);
+      transition: .22s ease;
+      font-size: 14px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      color: var(--green);
+      font-size: 23px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (min-width: 780px) {
+      body {
+        padding: 28px 0;
       }
-      .brand strong { font-size: 19px; }
-      .logo { width: 42px; height: 42px; }
-      .hero-main,
-      .qr-card,
-      .card,
-      .demo {
-        box-shadow: 0 10px 26px rgba(83, 69, 48, .1);
+
+      .stage {
+        min-height: calc(100vh - 56px);
+        border-radius: 30px;
+        overflow: hidden;
       }
-      .qr-card {
-        grid-template-columns: 112px 1fr;
-        gap: 12px;
-        padding: 14px;
+
+      .bottom-nav {
+        border-radius: 0 0 30px 30px;
       }
-      .qr-card img {
-        width: 108px;
-        height: 108px;
-        border-width: 6px;
-      }
-      .qr-card h2 { font-size: 20px; }
-      .jp { font-size: 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">日</div>
-        <div>
-          <strong>日语开口急救包</strong>
-          <span>Nihongo Mouthpiece</span>
-        </div>
+  <div class="stage">
+    <div class="app">
+      <div class="status" aria-hidden="true">
+        <span>9:41</span>
+        <span class="signals"><span class="bars"><i></i><i></i><i></i><i></i></span>⌁<span class="dot"></span></span>
       </div>
-      <div class="top-actions">
-        <a class="button secondary" href="#how">怎么用</a>
-        <a class="button" href="#try">试一句</a>
-      </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-main">
-          <span class="eyebrow">给中文母语者的日语嘴替</span>
-          <h1>日语开口急救包</h1>
-          <p class="lead">把中文想法，变成自然日语。</p>
-          <p class="sub">不是硬翻译，也不是背课本句型。它帮你把“我真正想说的话”改成更自然、更柔和、更适合真实沟通的日语，还会告诉你为什么这样说更顺。</p>
-
-          <div class="hero-points">
-            <div class="point">
-              <b>开口不再卡住</b>
-              <span>先拿到一句能直接说出口的日语。</span>
-            </div>
-            <div class="point">
-              <b>修掉翻译腔</b>
-              <span>看懂哪里生硬，慢慢养出语感。</span>
-            </div>
-            <div class="point">
-              <b>生活里用得上</b>
-              <span>覆盖预约、租房、学校、职场等场景。</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="qr-card" aria-label="二维码">
-          <img alt="扫码打开日语开口急救包" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Festherliu-lab.github.io%2Fnihongo-mouthpiece%2F">
+      <header class="brand-row">
+        <div class="brand">
+          <div class="logo">日</div>
           <div>
-            <h2>扫码打开使用界面</h2>
-            <p>手机扫码后，可以收藏网页或添加到主屏幕，随时练一句。</p>
-            <a class="url" href="https://estherliu-lab.github.io/nihongo-mouthpiece/">estherliu-lab.github.io/nihongo-mouthpiece</a>
+            <h1>日语开口急救包</h1>
+            <p>Nihongo Mouthpiece</p>
           </div>
-        </aside>
-      </section>
+        </div>
+        <button class="icon-btn" id="randomBtn" title="换一句">✦</button>
+      </header>
 
-      <section class="section" id="how">
-        <div class="section-title">
-          <h2>它适合这样用</h2>
-          <p>从“想表达”到“能说出口”，中间少一点卡顿。</p>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <h3>我想说</h3>
-            <p>输入一句中文，比如“我不是不想去，只是最近有点累”，得到自然版、口语版、礼貌版和更委婉版。</p>
-          </article>
-          <article class="card">
-            <h3>语感校准</h3>
-            <p>把自己写的日语放进去，检查它是否太直、太硬、太像中文翻译，并得到更自然的改法。</p>
-          </article>
-          <article class="card">
-            <h3>生活场景</h3>
-            <p>在医院、幼儿园、租房、电话预约、餐厅点餐、工作沟通时，快速找到合适的表达。</p>
-          </article>
-          <article class="card">
-            <h3>情绪表达</h3>
-            <p>把感谢、抱歉、拒绝、疲惫、想重新开始，说得更温柔、更克制，也更容易被理解。</p>
-          </article>
-          <article class="card">
-            <h3>每日一句</h3>
-            <p>每天记一句真正能用出去的日语，配中文意思、语感提示和替换练习，适合打卡复习。</p>
-          </article>
-          <article class="card">
-            <h3>中日双语</h3>
-            <p>适合写小红书、朋友圈、视频口播、学习笔记，把中文内容改成自然的中日双语表达。</p>
-          </article>
-        </div>
-      </section>
+      <main>
+        <section class="view active" id="view-home">
+          <div class="panel compose">
+            <div class="section-title">
+              <span id="composeTitle">我想说</span>
+              <span class="hint-pill" id="modeHint">把中文想法告诉我</span>
+            </div>
+            <textarea id="source" maxlength="260" placeholder="例如：最近有点累，但还是想继续努力。">最近有点累，但还是想继续努力。</textarea>
+            <div class="helper">
+              <span>试试换一种表达？</span>
+              <span id="count">15/260</span>
+            </div>
+            <div class="scene-row" id="sceneTools" hidden>
+              <select id="sceneSelect" aria-label="选择生活场景"></select>
+              <button class="secondary" id="sceneFill">套用</button>
+            </div>
+            <div class="center-action">
+              <button class="primary" id="generate">生成自然日语</button>
+            </div>
+          </div>
 
-      <section class="section">
-        <div class="section-title">
-          <h2>几个真实感案例</h2>
-          <p>重点不是逐字翻译，而是让语气变自然。</p>
-        </div>
-        <div class="examples">
-          <div class="example">
-            <span class="label">疲惫但想继续</span>
-            <div class="cn">中文：最近有点累，但还是想继续努力。</div>
-            <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
+          <div class="modes">
+            <div class="section-title">模式</div>
+            <div class="mode-grid" id="modeGrid"></div>
           </div>
-          <div class="example">
-            <span class="label">委婉拒绝</span>
-            <div class="cn">中文：我不是不想去，只是最近有点累。</div>
-            <div class="jp">行きたくないわけじゃなくて、最近ちょっと疲れていて。</div>
-          </div>
-          <div class="example">
-            <span class="label">不想麻烦别人</span>
-            <div class="cn">中文：我不想麻烦你。</div>
-            <div class="jp">ご迷惑をおかけしたくなくて。</div>
-          </div>
-          <div class="example">
-            <span class="label">重新开始</span>
-            <div class="cn">中文：我想重新开始。</div>
-            <div class="jp">もう一度、少しずつ始めてみたいです。</div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section demo" id="try">
-        <div>
-          <h2>试一句</h2>
-          <p>先看一个示例。真正使用时，把这里换成你自己的中文想法。</p>
-          <textarea id="source">最近有点累，但还是想继续努力。</textarea>
-          <div class="actions">
-            <button id="show">查看示例表达</button>
-            <button class="secondary" id="copy">复制推荐句</button>
+          <div class="panel result-panel">
+            <div class="section-title">生成结果</div>
+            <div class="result-list" id="resultList"></div>
           </div>
-        </div>
+        </section>
 
-        <div class="result" id="result">
-          <div class="result-line">
-            <span class="label">自然日语版</span>
-            <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
+        <section class="view" id="view-daily">
+          <div class="tabs">
+            <button class="tab active" data-daily="natural">自然日语</button>
+            <button class="tab" data-daily="daily">每日一句</button>
+            <button class="tab" data-daily="emotion">情绪表达</button>
           </div>
-          <div class="result-line">
-            <span class="label">更口语版</span>
-            <div class="jp">最近ちょっと疲れてるけど、もう少し頑張ってみようかな。</div>
+          <div class="panel daily-card">
+            <div class="daily-main" id="dailyContent"></div>
           </div>
-          <div class="result-line">
-            <span class="label">语感提示</span>
-            <div>「疲れ気味」比直接说「疲れている」更柔和，适合表达“有点累，但还想继续”的状态。</div>
+          <div class="panel result-panel">
+            <div class="section-title">相关表达</div>
+            <div class="practice-list" id="relatedList"></div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer>今天先记住一句能说出口的日语。</footer>
+        <section class="view" id="view-favorites">
+          <div class="panel">
+            <div class="section-title">收藏夹</div>
+            <div id="favoritesList"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-history">
+          <div class="panel">
+            <div class="section-title">学习记录</div>
+            <div id="historyList"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-profile">
+          <div class="panel">
+            <div class="section-title">我的练习</div>
+            <p class="cn">每次生成、收藏和打卡都会保存在这台设备里。</p>
+            <div class="stats">
+              <div class="stat"><b id="statHistory">0</b><span>生成</span></div>
+              <div class="stat"><b id="statFav">0</b><span>收藏</span></div>
+              <div class="stat"><b id="statCheck">0</b><span>打卡</span></div>
+            </div>
+            <div class="practice-list">
+              <button class="secondary" id="exportBtn">复制学习记录</button>
+              <button class="secondary" id="clearBtn">清空本机记录</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <nav class="bottom-nav" aria-label="底部导航">
+      <button class="nav-btn active" data-view="home"><i>⌂</i>首页</button>
+      <button class="nav-btn" data-view="daily"><i>◇</i>学习</button>
+      <button class="nav-btn" data-view="favorites"><i>☆</i>收藏</button>
+      <button class="nav-btn" data-view="history"><i>▤</i>记录</button>
+      <button class="nav-btn" data-view="profile"><i>○</i>我的</button>
+    </nav>
   </div>
 
+  <div class="toast" id="toast">已复制</div>
+
   <script>
-    const recommended = "最近少し疲れ気味だけど、もう少しだけ続けてみたい。";
-    const result = document.getElementById("result");
-    const show = document.getElementById("show");
-    const copy = document.getElementById("copy");
+    const modes = [
+      { id: "say", title: "我想说", icon: "…", hint: "把中文想法告诉我", desc: "中文想法变自然日语" },
+      { id: "check", title: "语感校准", icon: "⌁", hint: "贴一句日语来校准", desc: "修正翻译腔和生硬感" },
+      { id: "scene", title: "生活场景", icon: "⌂", hint: "选择真实生活场景", desc: "预约、看病、租房都能练" },
+      { id: "jlpt", title: "JLPT 陪跑", icon: "本", hint: "告诉我等级和时间", desc: "拆成每天能做的小任务" },
+      { id: "bilingual", title: "中日双语", icon: "あ", hint: "适合笔记和发布", desc: "中文内容变双语文案" },
+      { id: "emotion", title: "情绪表达", icon: "♡", hint: "说出微妙心情", desc: "感谢、拒绝、抱歉更柔和" },
+      { id: "daily", title: "每日一句", icon: "✿", hint: "今天记一句", desc: "一句日语加替换练习" }
+    ];
 
-    show.addEventListener("click", () => {
-      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    const scenes = [
+      "医院说明孩子发烧", "医院说明喉咙痛", "幼儿园说明牛奶过敏", "幼儿园请假", "餐厅询问无奶菜单",
+      "电话改预约时间", "租房看房询问费用", "联系房东维修", "市役所咨询手续", "邻居寒暄",
+      "工作迟到说明", "工作请假", "向同事求助", "客户道歉邮件", "朋友邀约拒绝",
+      "表达感谢", "表达抱歉", "表达最近有点累", "快递再配送", "车站问路",
+      "酒店请求安静房间", "网购退货", "手机套餐咨询", "老师请改作文", "提醒对方别着急"
+    ];
+
+    const phraseBank = [
+      {
+        keys: ["累", "努力", "坚持", "继续"],
+        cn: "最近有点累，但还是想继续努力。",
+        versions: [
+          ["自然日语版", "最近少し疲れ気味だけど、もう少しだけ続けてみたい。"],
+          ["更口语版", "最近ちょっと疲れてるけど、もう少し頑張ってみようかな。"],
+          ["更温柔版", "最近少し疲れ気味だけど、無理のない範囲でもう少し続けてみたい。"]
+        ],
+        note: "「疲れ気味」比直接说「疲れている」更柔和，适合表达有点累但还想继续的状态。",
+        practice: ["最近少し忙しいけど、もう少しだけ続けてみたい。", "うまくいかない日もあるけど、少しずつ進めたい。", "今日は無理せず、できるところまでやってみたい。"]
+      },
+      {
+        keys: ["不想去", "不去", "最近有点累"],
+        cn: "我不是不想去，只是最近有点累。",
+        versions: [
+          ["自然日语版", "行きたくないわけじゃなくて、最近ちょっと疲れていて。"],
+          ["更口语版", "行きたくないっていうより、最近ちょっと疲れてるんだ。"],
+          ["更委婉版", "行きたい気持ちはあるんだけど、最近少し疲れが出ていて。"]
+        ],
+        note: "「わけじゃなくて」可以解释误会，比直接否定更自然。",
+        practice: ["嫌なわけじゃなくて、少し時間が必要で。", "忘れていたわけじゃなくて、返信が遅くなってしまって。", "避けているわけじゃなくて、最近少し余裕がなくて。"]
+      },
+      {
+        keys: ["麻烦", "打扰"],
+        cn: "我不想麻烦你。",
+        versions: [
+          ["自然日语版", "ご迷惑をおかけしたくなくて。"],
+          ["口语版", "迷惑かけたくなくて。"],
+          ["礼貌版", "ご負担になってしまったら申し訳ないと思いまして。"]
+        ],
+        note: "日语里常用「迷惑」「負担」表达不想给对方添麻烦的顾虑。",
+        practice: ["お邪魔になってしまったらすみません。", "ご無理のない範囲で大丈夫です。", "もしご負担でなければお願いしたいです。"]
+      },
+      {
+        keys: ["重新开始", "重来", "再开始"],
+        cn: "我想重新开始。",
+        versions: [
+          ["自然日语版", "もう一度、少しずつ始めてみたいです。"],
+          ["口语版", "もう一回、少しずつ始めてみようかな。"],
+          ["温柔版", "焦らずに、もう一度ゆっくり始めてみたいです。"]
+        ],
+        note: "「少しずつ」「ゆっくり」能让重新开始听起来更柔和，不像口号。",
+        practice: ["また少しずつ慣れていきたいです。", "無理せず、できるところから始めたいです。", "もう一度、自分のペースで進めたいです。"]
+      },
+      {
+        keys: ["回复慢", "状态不好", "今天状态"],
+        cn: "今天状态不太好，回复可能会慢一点。",
+        versions: [
+          ["自然日语版", "今日はあまり調子がよくなくて、返信が少し遅くなるかもしれません。"],
+          ["口语版", "今日ちょっと調子悪くて、返信遅くなるかも。"],
+          ["礼貌版", "本日は少し体調が優れないため、ご返信が遅くなるかもしれません。"]
+        ],
+        note: "身体和心情状态都可以用「調子」，比「状態」更日常。",
+        practice: ["少し立て込んでいて、返信が遅くなるかもしれません。", "落ち着いたら改めて連絡します。", "今日は無理せず休ませてください。"]
+      },
+      {
+        keys: ["感谢", "谢谢", "理解"],
+        cn: "谢谢你一直理解我。",
+        versions: [
+          ["自然日语版", "いつも理解してくれて、本当にありがとう。"],
+          ["温柔版", "いつも受け止めてくれて、本当にありがとう。"],
+          ["礼貌版", "いつもご理解いただき、本当にありがとうございます。"]
+        ],
+        note: "朋友之间用「受け止めてくれて」会比直说理解更有温度。",
+        practice: ["いつも話を聞いてくれてありがとう。", "そばにいてくれて本当に助かっています。", "気にかけてくれてありがとう。"]
+      }
+    ];
+
+    const checkBank = [
+      {
+        keys: ["会う時間がありません", "時間がありません"],
+        original: "私はあなたに会う時間がありません。",
+        versions: [
+          ["原句判断", "可以理解，但语气有点直接。"],
+          ["标准自然版", "最近少し忙しくて、なかなかお会いする時間が取れなくて。"],
+          ["更委婉版", "お会いしたい気持ちはあるのですが、最近少し余裕がなくて。"]
+        ],
+        note: "直接说“没有时间见你”容易显得拒绝过硬，补上原因和缓冲更自然。",
+        practice: ["今週は少し立て込んでいて。", "また落ち着いたら連絡します。", "今回は少し難しそうです。"]
+      },
+      {
+        keys: ["疲れた気がします", "疲れた"],
+        original: "私はとても疲れた気がします。",
+        versions: [
+          ["原句判断", "能懂，但像中文结构。"],
+          ["标准自然版", "最近ちょっと疲れ気味です。"],
+          ["口语版", "最近ちょっと疲れてるかも。"]
+        ],
+        note: "「疲れ気味」更适合表达轻微、持续的疲惫感。",
+        practice: ["最近少し忙しめです。", "今日は無理せず休みたいです。", "ちょっと余裕がなくて。"]
+      }
+    ];
+
+    const sceneTemplates = {
+      "医院说明孩子发烧": ["子どもが昨日から熱を出していて、診ていただきたいです。", "什么时候开始发烧、最高体温是多少，可以一起说明。"],
+      "幼儿园说明牛奶过敏": ["子どもに牛乳アレルギーがあります。給食の内容を確認させていただけますか。", "用「確認させていただけますか」更礼貌，也方便老师接话。"],
+      "餐厅询问无奶菜单": ["牛乳が入っていないメニューはありますか。", "过敏场景建议直接说明「アレルギーがあります」。"],
+      "电话改预约时间": ["予約の時間を変更していただくことはできますか。", "电话里先报姓名和原预约时间会更顺。"],
+      "租房看房询问费用": ["初期費用は全部でどのくらいかかりますか。", "租房问费用时「全部で」能减少遗漏。"]
+    };
+
+    const dailySentences = [
+      {
+        type: "natural",
+        jp: "最近少し疲れ気味だけど、もう少しだけ続けてみたい。",
+        cn: "最近有点累，但还是想再坚持一下。",
+        note: "「疲れ気味」让语气更柔和，不会显得太沉重。",
+        related: ["今日は無理せず進めたい。", "少し休んで、また続けたい。", "焦らずにやっていきたい。"]
+      },
+      {
+        type: "daily",
+        jp: "焦らず、できるところから始めればいい。",
+        cn: "不用着急，从能做到的地方开始就好。",
+        note: "适合给自己打气，也适合温柔地鼓励别人。",
+        related: ["少しずつで大丈夫。", "今日はここまでできたら十分。", "自分のペースで進めよう。"]
+      },
+      {
+        type: "emotion",
+        jp: "今は少し時間をもらえると助かります。",
+        cn: "现在如果能给我一点时间，我会很感激。",
+        note: "比直接说“我不想说”更柔和，适合需要空间的时候。",
+        related: ["少し落ち着いてから話したいです。", "今はうまく言葉にできなくて。", "また改めて連絡します。"]
+      }
+    ];
+
+    let selectedMode = "say";
+    let dailyType = "natural";
+    const els = {
+      modeGrid: document.getElementById("modeGrid"),
+      source: document.getElementById("source"),
+      count: document.getElementById("count"),
+      composeTitle: document.getElementById("composeTitle"),
+      modeHint: document.getElementById("modeHint"),
+      resultList: document.getElementById("resultList"),
+      sceneTools: document.getElementById("sceneTools"),
+      sceneSelect: document.getElementById("sceneSelect"),
+      dailyContent: document.getElementById("dailyContent"),
+      relatedList: document.getElementById("relatedList"),
+      favoritesList: document.getElementById("favoritesList"),
+      historyList: document.getElementById("historyList"),
+      toast: document.getElementById("toast")
+    };
+
+    const store = {
+      get favorites() { return JSON.parse(localStorage.getItem("nihongo:favorites") || "[]"); },
+      set favorites(value) { localStorage.setItem("nihongo:favorites", JSON.stringify(value)); },
+      get history() { return JSON.parse(localStorage.getItem("nihongo:history") || "[]"); },
+      set history(value) { localStorage.setItem("nihongo:history", JSON.stringify(value.slice(0, 60))); },
+      get checkins() { return Number(localStorage.getItem("nihongo:checkins") || "0"); },
+      set checkins(value) { localStorage.setItem("nihongo:checkins", String(value)); }
+    };
+
+    function showToast(text) {
+      els.toast.textContent = text;
+      els.toast.classList.add("show");
+      setTimeout(() => els.toast.classList.remove("show"), 1300);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      showToast("已复制");
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("当前浏览器不支持朗读");
+        return;
+      }
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ja-JP";
+      utterance.rate = 0.86;
+      speechSynthesis.speak(utterance);
+    }
+
+    function findPhrase(input) {
+      return phraseBank.find(item => item.keys.some(key => input.includes(key))) || phraseBank[0];
+    }
+
+    function findCheck(input) {
+      return checkBank.find(item => item.keys.some(key => input.includes(key))) || checkBank[0];
+    }
+
+    function sceneResult() {
+      const scene = els.sceneSelect.value;
+      const data = sceneTemplates[scene] || ["すみません、" + scene + "について少し相談させてください。", "先说明想咨询的事情，再补充具体情况，会更容易被理解。"];
+      return {
+        input: scene,
+        cards: [
+          ["先这样说", data[0]],
+          ["更礼貌一点", "お忙しいところ恐れ入りますが、" + data[0]],
+          ["跟读练习", data[0].split("、").join(" / ")]
+        ],
+        note: data[1],
+        practice: ["少し確認したいことがあります。", "念のため、もう一度教えていただけますか。", "可能でしたら変更をお願いしたいです。"]
+      };
+    }
+
+    function makeResult() {
+      const input = els.source.value.trim();
+      if (selectedMode === "scene") return sceneResult();
+      if (selectedMode === "check") {
+        const item = findCheck(input);
+        return { input: input || item.original, cards: item.versions, note: item.note, practice: item.practice };
+      }
+      if (selectedMode === "jlpt") {
+        return {
+          input,
+          cards: [
+            ["今日任务", "単語を10個、短い例文を3つ、音読を5分だけやってみましょう。"],
+            ["学习路线", "词汇和语法先少量多次，阅读不要急着追速度，听力每天保持接触。"],
+            ["打卡句", "今日はここまでできたら十分です。"]
+          ],
+          note: "JLPT 备考最容易卡在“看过但不会用”，每天用一个语法造自己的生活句更有效。",
+          practice: ["今日は新しい文法を一つ使ってみます。", "わからないところを一つだけ確認します。", "明日も少しだけ続けます。"]
+        };
+      }
+      if (selectedMode === "bilingual") {
+        const item = findPhrase(input);
+        return {
+          input,
+          cards: [
+            ["中文原意", input || item.cn],
+            ["日语自然版", item.versions[0][1]],
+            ["中日双语版", (input || item.cn) + "\n" + item.versions[0][1]]
+          ],
+          note: "发布型双语文案要先自然，再漂亮。不要为了高级感把句子写得太硬。",
+          practice: item.practice
+        };
+      }
+      if (selectedMode === "emotion") {
+        const item = findPhrase(input);
+        return {
+          input,
+          cards: [
+            ["克制版", item.versions[0][1]],
+            ["温柔版", item.versions[item.versions.length - 1][1]],
+            ["适合发文版", item.versions[0][1] + " 今日も少しずつ。"]
+          ],
+          note: "日语里的情绪表达常常更克制，留一点余地反而更自然。",
+          practice: item.practice
+        };
+      }
+      if (selectedMode === "daily") {
+        const d = dailySentences[1];
+        return {
+          input,
+          cards: [["今日一句", d.jp], ["中文意思", d.cn], ["语感", d.note]],
+          note: "把一句话说顺，比收藏很多句更重要。",
+          practice: d.related
+        };
+      }
+      const item = findPhrase(input);
+      return { input: input || item.cn, cards: item.versions, note: item.note, practice: item.practice };
+    }
+
+    function renderResult(save = false) {
+      const result = makeResult();
+      els.resultList.innerHTML = result.cards.map(([label, text]) => `
+        <article class="result-card">
+          <div class="result-head">
+            <span class="tag ${label.includes("口语") || label.includes("礼貌") ? "peach" : ""}">${label}</span>
+            <div class="mini-actions">
+              <button class="mini" data-copy="${escapeAttr(text)}" title="复制">⧉</button>
+              <button class="mini" data-speak="${escapeAttr(text)}" title="朗读">▶</button>
+              <button class="mini" data-fav="${escapeAttr(text)}" title="收藏">☆</button>
+            </div>
+          </div>
+          <div class="${/[ぁ-んァ-ン一-龯]/.test(text) ? "jp" : "cn"}">${escapeHtml(text).replace(/\n/g, "<br>")}</div>
+        </article>
+      `).join("") + `
+        <div class="note">${escapeHtml(result.note)}</div>
+        <div class="practice-list">
+          ${result.practice.map(item => `<div class="practice-item"><span>${escapeHtml(item)}</span><button class="mini" data-copy="${escapeAttr(item)}">⧉</button></div>`).join("")}
+        </div>
+      `;
+      if (save) saveHistory(result);
+    }
+
+    function saveHistory(result) {
+      const first = result.cards.find(card => /日语|句|版|克制/.test(card[0])) || result.cards[0];
+      store.history = [{ at: Date.now(), mode: currentMode().title, input: result.input, output: first[1] }, ...store.history];
+      updateStats();
+    }
+
+    function currentMode() {
+      return modes.find(mode => mode.id === selectedMode);
+    }
+
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char]));
+    }
+
+    function escapeAttr(text) {
+      return escapeHtml(text).replace(/\n/g, "&#10;");
+    }
+
+    function renderModes() {
+      els.modeGrid.innerHTML = modes.map(mode => `
+        <button class="mode-card ${mode.id === selectedMode ? "active" : ""}" data-mode="${mode.id}">
+          <span class="mode-icon">${mode.icon}</span>
+          <b>${mode.title}</b>
+          <span>${mode.desc}</span>
+        </button>
+      `).join("");
+    }
+
+    function selectMode(id) {
+      selectedMode = id;
+      const mode = currentMode();
+      els.composeTitle.textContent = mode.title;
+      els.modeHint.textContent = mode.hint;
+      els.sceneTools.hidden = id !== "scene";
+      document.getElementById("generate").textContent = id === "check" ? "开始语感校准" : id === "daily" ? "生成每日一句" : "生成自然日语";
+      renderModes();
+      renderResult(false);
+    }
+
+    function renderDaily() {
+      const d = dailySentences.find(item => item.type === dailyType) || dailySentences[0];
+      els.dailyContent.innerHTML = `
+        <span class="tag">今日一句</span>
+        <div class="jp" style="margin-top:10px">${escapeHtml(d.jp)}</div>
+        <p class="cn">中文：${escapeHtml(d.cn)}</p>
+        <div class="note">${escapeHtml(d.note)}</div>
+        <div class="actions">
+          <button class="secondary" data-copy="${escapeAttr(d.jp)}">复制</button>
+          <button class="secondary" data-speak="${escapeAttr(d.jp)}">朗读</button>
+          <button class="primary" id="checkinBtn">打卡</button>
+        </div>
+      `;
+      els.relatedList.innerHTML = d.related.map(item => `<div class="practice-item"><span>${escapeHtml(item)}</span><button class="mini" data-copy="${escapeAttr(item)}">⧉</button></div>`).join("");
+    }
+
+    function renderFavorites() {
+      const favs = store.favorites;
+      els.favoritesList.innerHTML = favs.length ? `<div class="practice-list">${favs.map((item, index) => `
+        <div class="practice-item">
+          <span>${escapeHtml(item)}</span>
+          <button class="mini" data-remove-fav="${index}">×</button>
+        </div>
+      `).join("")}</div>` : `<div class="empty">还没有收藏。看到喜欢的句子，点 ☆ 保存到这里。</div>`;
+    }
+
+    function renderHistory() {
+      const history = store.history;
+      els.historyList.innerHTML = history.length ? `<div class="practice-list">${history.map(item => `
+        <div class="result-card">
+          <span class="tag">${escapeHtml(item.mode)}</span>
+          <div class="cn">输入：${escapeHtml(item.input || "未填写")}</div>
+          <div class="jp">${escapeHtml(item.output)}</div>
+        </div>
+      `).join("")}</div>` : `<div class="empty">还没有学习记录。生成一次结果后会自动保存。</div>`;
+    }
+
+    function updateStats() {
+      document.getElementById("statHistory").textContent = store.history.length;
+      document.getElementById("statFav").textContent = store.favorites.length;
+      document.getElementById("statCheck").textContent = store.checkins;
+      renderFavorites();
+      renderHistory();
+    }
+
+    function switchView(view) {
+      document.querySelectorAll(".view").forEach(node => node.classList.remove("active"));
+      document.getElementById("view-" + view).classList.add("active");
+      document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.view === view));
+      if (view === "daily") renderDaily();
+      if (view === "favorites") renderFavorites();
+      if (view === "history") renderHistory();
+      if (view === "profile") updateStats();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener("click", event => {
+      const copy = event.target.closest("[data-copy]");
+      const speakBtn = event.target.closest("[data-speak]");
+      const fav = event.target.closest("[data-fav]");
+      const removeFav = event.target.closest("[data-remove-fav]");
+      const mode = event.target.closest("[data-mode]");
+      const nav = event.target.closest("[data-view]");
+      const daily = event.target.closest("[data-daily]");
+
+      if (copy) copyText(copy.dataset.copy);
+      if (speakBtn) speak(speakBtn.dataset.speak);
+      if (fav) {
+        const list = store.favorites;
+        if (!list.includes(fav.dataset.fav)) list.unshift(fav.dataset.fav);
+        store.favorites = list;
+        updateStats();
+        showToast("已收藏");
+      }
+      if (removeFav) {
+        const list = store.favorites;
+        list.splice(Number(removeFav.dataset.removeFav), 1);
+        store.favorites = list;
+        updateStats();
+        showToast("已移除");
+      }
+      if (mode) selectMode(mode.dataset.mode);
+      if (nav) switchView(nav.dataset.view);
+      if (daily) {
+        dailyType = daily.dataset.daily;
+        document.querySelectorAll("[data-daily]").forEach(btn => btn.classList.toggle("active", btn.dataset.daily === dailyType));
+        renderDaily();
+      }
+      if (event.target.id === "checkinBtn") {
+        store.checkins = store.checkins + 1;
+        updateStats();
+        showToast("打卡完成");
+      }
     });
 
-    copy.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(recommended);
-      copy.textContent = "已复制";
-      setTimeout(() => {
-        copy.textContent = "复制推荐句";
-      }, 1300);
+    document.getElementById("generate").addEventListener("click", () => renderResult(true));
+    document.getElementById("sceneFill").addEventListener("click", () => {
+      els.source.value = els.sceneSelect.value;
+      updateCount();
+      renderResult(false);
     });
+    document.getElementById("randomBtn").addEventListener("click", () => {
+      const item = phraseBank[Math.floor(Math.random() * phraseBank.length)];
+      els.source.value = item.cn;
+      selectMode("say");
+      updateCount();
+      renderResult(false);
+    });
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      const text = store.history.map(item => `${item.mode}\n输入：${item.input}\n输出：${item.output}`).join("\n\n");
+      copyText(text || "还没有学习记录。");
+    });
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      localStorage.removeItem("nihongo:favorites");
+      localStorage.removeItem("nihongo:history");
+      localStorage.removeItem("nihongo:checkins");
+      updateStats();
+      showToast("已清空");
+    });
+
+    function updateCount() {
+      els.count.textContent = `${els.source.value.length}/260`;
+    }
+
+    els.source.addEventListener("input", updateCount);
+    scenes.forEach(scene => {
+      const option = document.createElement("option");
+      option.value = scene;
+      option.textContent = scene;
+      els.sceneSelect.appendChild(option);
+    });
+
+    renderModes();
+    renderResult(false);
+    renderDaily();
+    updateStats();
+    updateCount();
   </script>
 </body>
 </html>
