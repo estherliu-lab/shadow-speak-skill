@@ -318,6 +318,11 @@
       line-height: 1.55;
     }
 
+    .grid + pre,
+    pre + pre {
+      margin-top: 14px;
+    }
+
     footer {
       padding: 28px 0 40px;
       color: var(--muted);
@@ -368,6 +373,9 @@
           <a class="button secondary" href="https://github.com/estherliu-lab/shadow-speak-skill/archive/refs/heads/main.zip" data-copy="zh">下载 ZIP</a>
           <a class="button secondary" href="https://github.com/estherliu-lab/shadow-speak-skill/archive/refs/heads/main.zip" data-copy="en">Download ZIP</a>
           <a class="button secondary" href="https://github.com/estherliu-lab/shadow-speak-skill/archive/refs/heads/main.zip" data-copy="ja">ZIP をダウンロード</a>
+          <a class="button secondary" href="#install" data-copy="zh">安装方法</a>
+          <a class="button secondary" href="#install" data-copy="en">Install</a>
+          <a class="button secondary" href="#install" data-copy="ja">インストール</a>
           <a class="button secondary" href="#usage" data-copy="zh">查看使用方法</a>
           <a class="button secondary" href="#usage" data-copy="en">How to use</a>
           <a class="button secondary" href="#usage" data-copy="ja">使い方を見る</a>
@@ -403,6 +411,14 @@
       <p class="section-lead" data-copy="ja">これはブラウザ拡張ではなく Codex skill です。リポジトリのフォルダを Codex skills ディレクトリに入れ、Codex を再起動します。</p>
       <div class="grid">
         <div class="panel">
+          <h3 data-copy="zh">最简单：让 Codex 自动安装</h3>
+          <h3 data-copy="en">Easiest: Ask Codex To Install</h3>
+          <h3 data-copy="ja">一番簡単: Codex にインストールを依頼</h3>
+          <p data-copy="zh">把仓库链接发给 Codex，让它安装到你的 skills 目录。Codex 可能会请求写入权限，允许后重启即可。</p>
+          <p data-copy="en">Send the repo link to Codex and ask it to install the skill into your skills directory. Approve the write request, then restart Codex.</p>
+          <p data-copy="ja">リポジトリリンクを Codex に送り、skills ディレクトリへインストールしてもらいます。書き込み許可後、Codex を再起動します。</p>
+        </div>
+        <div class="panel">
           <h3 data-copy="zh">方法一：下载 ZIP</h3>
           <h3 data-copy="en">Option 1: Download ZIP</h3>
           <h3 data-copy="ja">方法 1: ZIP をダウンロード</h3>
@@ -432,16 +448,28 @@ git clone https://github.com/estherliu-lab/shadow-speak-skill.git "$env:USERPROF
 
 # macOS / Linux
 git clone https://github.com/estherliu-lab/shadow-speak-skill.git ~/.codex/skills/shadow-speak-skill</code></pre>
+      <pre data-copy="zh"><code>请帮我安装这个 Codex skill：
+https://github.com/estherliu-lab/shadow-speak-skill
+
+安装后告诉我怎么重启并测试。</code></pre>
       <pre data-copy="en"><code># Windows PowerShell
 git clone https://github.com/estherliu-lab/shadow-speak-skill.git "$env:USERPROFILE\.codex\skills\shadow-speak-skill"
 
 # macOS / Linux
 git clone https://github.com/estherliu-lab/shadow-speak-skill.git ~/.codex/skills/shadow-speak-skill</code></pre>
+      <pre data-copy="en"><code>Please install this Codex skill:
+https://github.com/estherliu-lab/shadow-speak-skill
+
+After installation, tell me how to restart Codex and test it.</code></pre>
       <pre data-copy="ja"><code># Windows PowerShell
 git clone https://github.com/estherliu-lab/shadow-speak-skill.git "$env:USERPROFILE\.codex\skills\shadow-speak-skill"
 
 # macOS / Linux
 git clone https://github.com/estherliu-lab/shadow-speak-skill.git ~/.codex/skills/shadow-speak-skill</code></pre>
+      <pre data-copy="ja"><code>Please install this Codex skill:
+https://github.com/estherliu-lab/shadow-speak-skill
+
+After installation, tell me how to restart Codex and test it.</code></pre>
     </section>
 
     <section>
@@ -571,18 +599,181 @@ python scripts/anki_csv_exporter.py cards.json cards.csv</code></pre>
     </section>
 
     <section>
+      <h2 data-copy="zh">完整案例：一段字幕如何变成学习包</h2>
+      <h2 data-copy="en">Full Example: From Transcript To Study Pack</h2>
+      <h2 data-copy="ja">使用例: 字幕から学習パックへ</h2>
+      <p class="section-lead" data-copy="zh">下面是一个用户最容易理解的流程：贴一段视频字幕，Codex 用这个 skill 把它拆成能读、能背、能复习、能导出的资料。</p>
+      <p class="section-lead" data-copy="en">Here is the simplest workflow: paste a short transcript, and Codex turns it into material you can read aloud, memorize, review, and export.</p>
+      <p class="section-lead" data-copy="ja">短い字幕を貼ると、Codex が音読、暗記、復習、エクスポートできる教材に変換します。</p>
+      <div class="grid">
+        <div class="panel">
+          <h3 data-copy="zh">用户输入</h3>
+          <h3 data-copy="en">User Prompt</h3>
+          <h3 data-copy="ja">入力例</h3>
+          <p data-copy="zh">适合第一次测试：短、真实、能马上看到影子跟读和 Anki 的价值。</p>
+          <p data-copy="en">A short first test that quickly shows the value of shadowing and Anki output.</p>
+          <p data-copy="ja">短く試せて、シャドーイングと Anki 出力の価値がすぐ分かります。</p>
+        </div>
+        <div class="panel">
+          <h3 data-copy="zh">Skill 会做什么</h3>
+          <h3 data-copy="en">What The Skill Does</h3>
+          <h3 data-copy="ja">Skill の処理</h3>
+          <p data-copy="zh">识别语言和等级，挑重点句，拆语法和语气，标出停顿重音，最后生成复习卡和 CSV。</p>
+          <p data-copy="en">It detects language and level, selects key sentences, explains structure and tone, marks rhythm, then exports cards and CSV.</p>
+          <p data-copy="ja">言語とレベルを判定し、重要文を選び、構造とトーンを説明し、リズムとカードを出します。</p>
+        </div>
+        <div class="panel">
+          <h3 data-copy="zh">用户拿到什么</h3>
+          <h3 data-copy="en">What Users Get</h3>
+          <h3 data-copy="ja">得られるもの</h3>
+          <p data-copy="zh">不是一段翻译，而是一份可以当天开口练、明天复习、导入 Anki 的学习包。</p>
+          <p data-copy="en">Not just a translation, but a pack you can speak today, review tomorrow, and import into Anki.</p>
+          <p data-copy="ja">翻訳だけでなく、その日に声に出し、翌日復習し、Anki に入れられる教材です。</p>
+        </div>
+      </div>
+      <pre data-copy="zh"><code>$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+
+When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
+      <pre data-copy="en"><code>$shadow-speak-skill Turn this transcript into a shadowing study pack and Anki CSV:
+
+When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
+      <pre data-copy="ja"><code>$shadow-speak-skill この英語字幕をシャドーイング教材と Anki CSV にしてください：
+
+When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
+      <pre data-copy="zh"><code># 输出片段示例
+## 输入识别
+- 学习语言：英语
+- 内容类型：短视频/字幕文本
+- 适合等级：B1-B2
+
+## 重点句子拆解
+原句：Later I realized that words only become useful when I can use them in a real situation.
+自然意思：后来我才意识到，词只有在真实场景里用得出来，才真正有用。
+值得学的点：I realized that... 很适合表达“我后来才明白”。
+
+## 影子跟读
+Later I **realized** / that words only become **useful** / when I can use them / in a real **situation**.
+
+## Anki CSV
+Front,Back,Tags
+"I later realized that...","我后来才意识到...|表达认知变化|I later realized that practice matters more than speed.|english,B1,reflection"</code></pre>
+      <pre data-copy="en"><code># Example output excerpt
+## Input Detection
+- Learning language: English
+- Content type: short transcript
+- Level: B1-B2
+
+## Sentence Breakdown
+Original: Later I realized that words only become useful when I can use them in a real situation.
+Meaning: Words become truly useful only when you can use them in real life.
+Useful pattern: I realized that... = I later understood that...
+
+## Shadowing
+Later I **realized** / that words only become **useful** / when I can use them / in a real **situation**.
+
+## Anki CSV
+Front,Back,Tags
+"I later realized that...","I later understood that...|reflection pattern|I later realized that practice matters more than speed.|english,B1,reflection"</code></pre>
+      <pre data-copy="ja"><code># 出力例
+## 入力判定
+- 学習言語：英語
+- 種類：短い字幕
+- レベル：B1-B2
+
+## 文の解説
+Original: Later I realized that words only become useful when I can use them in a real situation.
+意味：単語は実際の場面で使えて初めて役に立つ。
+使える型：I realized that... = 後になって...だと分かった。
+
+## 音読
+Later I **realized** / that words only become **useful** / when I can use them / in a real **situation**.</code></pre>
+    </section>
+
+    <section>
       <h2 data-copy="zh">可直接测试的提示词</h2>
       <h2 data-copy="en">Starter Prompts</h2>
       <h2 data-copy="ja">試せるプロンプト</h2>
-      <pre data-copy="zh"><code>用影子跟读 Skill 帮我拆解这段日语字幕，适合 N3-N2 学习者。
-帮我把这段英文做成 shadowing 练习，解释用中文，并生成 Anki CSV。
-这条 YouTube 视频我想学英语。如果你无法读取字幕，请提示我粘贴字幕。</code></pre>
-      <pre data-copy="en"><code>Use Shadow Speak to turn this English transcript into shadowing practice and Anki CSV.
-Break down this Japanese subtitle excerpt for an N3-N2 learner.
-Try this YouTube link first. If captions are unavailable, ask me to paste them.</code></pre>
-      <pre data-copy="ja"><code>この日本語字幕を N3-N2 向けのシャドーイング教材にしてください。
-この英語スクリプトを音読練習と Anki CSV にしてください。
-この YouTube リンクを試し、字幕が取れなければ貼り付けを促してください。</code></pre>
+      <pre data-copy="zh"><code># YouTube 视频
+$shadow-speak-skill 这条 YouTube 视频我想学英语。如果你无法读取字幕，请提示我粘贴字幕：
+https://www.youtube.com/watch?v=VIDEO_ID
+
+# SRT/VTT 字幕
+$shadow-speak-skill 帮我清理这段 SRT 字幕，选出 10 个最值得跟读的句子，并生成 Anki CSV。
+
+# 英文台词
+$shadow-speak-skill 用电影字幕老师模式拆解这段英文台词，重点讲语气、停顿、重音和潜台词。
+
+# 日语学习
+$shadow-speak-skill 把这段日语字幕做成 N3-N2 学习包：假名、中文意思、句子拆解、跟读稿、小测验都要。
+
+# 一句多用
+$shadow-speak-skill 这句话用英语和日语怎么自然表达？给我朋友聊天版、正式版、社交媒体版、温柔版。
+
+# 考试强化
+$shadow-speak-skill 帮我把这段英文文章整理成 IELTS Speaking 可用表达，并给 5 个替换练习。
+
+# Anki
+$shadow-speak-skill 把这 20 个重点句做成 Anki CSV，标签包含 english、shadowing、B2。
+
+# 打卡文案
+$shadow-speak-skill 生成今天的学习打卡文案，适合朋友圈、小红书和 X，内容不要太像 AI。
+
+# 纠错
+$shadow-speak-skill 用严格老师模式检查我写的英文，指出不自然的地方，再给我更自然版本。</code></pre>
+      <pre data-copy="en"><code># YouTube
+$shadow-speak-skill Try this YouTube link first. If captions are unavailable, ask me to paste the transcript:
+https://www.youtube.com/watch?v=VIDEO_ID
+
+# Captions
+$shadow-speak-skill Clean this SRT/VTT subtitle file and choose 10 sentences worth shadowing.
+
+# English dialogue
+$shadow-speak-skill Use movie-subtitle coach mode. Explain tone, pauses, stress, and subtext.
+
+# Japanese
+$shadow-speak-skill Turn this Japanese subtitle excerpt into an N3-N2 study pack with kana, meanings, breakdowns, shadowing, and quiz.
+
+# One idea, many uses
+$shadow-speak-skill Say this naturally in English and Japanese: casual, formal, social post, and gentle versions.
+
+# Exam
+$shadow-speak-skill Turn this English passage into IELTS Speaking expressions with 5 replacement drills.
+
+# Anki
+$shadow-speak-skill Make Anki CSV cards from these 20 key sentences. Use tags english, shadowing, B2.
+
+# Daily post
+$shadow-speak-skill Write a natural daily study check-in for WeChat, Xiaohongshu, and X.
+
+# Correction
+$shadow-speak-skill Strict teacher mode: correct my English and explain what sounds unnatural.</code></pre>
+      <pre data-copy="ja"><code># YouTube
+$shadow-speak-skill この YouTube リンクを試してください。字幕が取れなければ、貼り付けるように案内してください：
+https://www.youtube.com/watch?v=VIDEO_ID
+
+# 字幕
+$shadow-speak-skill この SRT/VTT 字幕を整理し、シャドーイングに向いた 10 文を選んでください。
+
+# 英語台詞
+$shadow-speak-skill 映画字幕コーチモードで、トーン、間、強調、含みを説明してください。
+
+# 日本語
+$shadow-speak-skill この日本語字幕を N3-N2 向けの教材にしてください。かな、意味、文解説、音読、クイズも入れてください。
+
+# 1 つの意味を複数表現へ
+$shadow-speak-skill この内容を英語と日本語で自然に言ってください。カジュアル、フォーマル、SNS、やさしい表現がほしいです。
+
+# 試験対策
+$shadow-speak-skill この英語文章を IELTS Speaking で使える表現に整理し、置き換え練習を 5 つ作ってください。
+
+# Anki
+$shadow-speak-skill この重要文 20 個を Anki CSV にしてください。タグは english、shadowing、B2。
+
+# 学習投稿
+$shadow-speak-skill 今日の学習投稿文を作ってください。自然で、AI っぽくない文にしてください。
+
+# 添削
+$shadow-speak-skill 厳しい先生モードで私の英語を直し、不自然なところを説明してください。</code></pre>
     </section>
   </main>
 
