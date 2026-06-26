@@ -4,91 +4,409 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>日语开口急救包</title>
+  <meta name="description" content="把中文想法变成自然日语的随身练习工具。">
   <style>
-    :root{--bg:#faf7f0;--card:#fffdf8;--green:#7f9b76;--deep:#5f7f58;--beige:#d8c3a5;--orange:#e8a87c;--text:#2f2f2f;--muted:#746d63;--border:#e8ddcd;--pink:#efb8a8;--line:rgba(95,127,88,.25)}
-    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top left,#fffaf0 0,#faf7f0 34%,#f6efe3 100%);color:var(--text);font-family:ui-serif,"Noto Serif SC","Songti SC",serif;letter-spacing:0;line-height:1.6}
-    button,textarea,select{font:inherit} button{cursor:pointer}
-    .app{min-height:100vh;display:grid;grid-template-columns:280px 1fr}
-    aside{border-right:1px solid var(--border);padding:24px;background:rgba(255,253,248,.78);position:sticky;top:0;height:100vh}
-    .brand{display:flex;gap:12px;align-items:center;margin-bottom:24px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,#efb8a8,#f8d8bc);display:grid;place-items:center;color:#fff;font-weight:700;box-shadow:0 8px 18px rgba(95,127,88,.12)}h1{font-size:24px;line-height:1.2;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
-    nav{display:grid;gap:8px}.tab{border:1px solid transparent;background:transparent;text-align:left;border-radius:8px;padding:10px 12px;color:var(--muted)}.tab.active{background:#eef2e8;border-color:var(--line);color:var(--deep);font-weight:700}
-    main{padding:28px;max-width:1180px;width:100%;margin:0 auto}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:24px;align-items:start}.headline{padding:24px 0}h2{font-size:48px;line-height:1.08;margin:0 0 12px}.lead{font-size:21px;color:var(--deep);margin:0 0 8px}.sub{color:var(--muted);margin:0 0 22px}
-    .panel{background:rgba(255,253,248,.86);border:1px solid var(--border);border-radius:8px;box-shadow:0 16px 36px rgba(79,67,47,.08);padding:18px}.input{width:100%;min-height:132px;border:1px solid var(--border);background:#fff;border-radius:8px;padding:14px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.primary{background:var(--deep);color:#fff;border:0;border-radius:8px;padding:10px 18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}.ghost{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--deep)}
-    .output{display:grid;gap:12px}.result{border:1px solid var(--border);background:#fff;border-radius:8px;padding:14px}.tag{display:inline-block;background:#edf1e5;color:var(--deep);border-radius:6px;padding:2px 8px;font-size:13px;margin-bottom:8px}.jp{font-size:21px}.muted{color:var(--muted);font-size:14px}
-    .modes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.mode{min-height:116px;text-align:left;background:rgba(255,253,248,.9);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px}.mode span{font-weight:700;color:var(--deep)}.mode small{color:var(--muted)}
-    .section{margin-top:26px}.section h3{font-size:24px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.list{display:grid;gap:10px}.row{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px solid var(--border);background:#fff;border-radius:8px;padding:12px}.row button{flex:0 0 auto}
-    .checkin{background:linear-gradient(180deg,#fffdf8,#fbf3e7);border:1px solid var(--border);border-radius:8px;padding:18px}.card-title{color:var(--deep);font-weight:700}.bottom{position:fixed;display:none;left:0;right:0;bottom:0;background:#fffdf8;border-top:1px solid var(--border);padding:8px;grid-template-columns:repeat(5,1fr);gap:6px}.bottom button{border:0;background:transparent;color:var(--muted);font-size:12px;padding:8px}.bottom .active{color:var(--deep);font-weight:700}
-    @media (max-width:900px){.app{display:block}aside{display:none}.bottom{display:grid}main{padding:18px 14px 82px}.hero{grid-template-columns:1fr}h2{font-size:34px}.modes{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.jp{font-size:19px}}
+    :root {
+      --bg: #faf7f0;
+      --paper: #fffdf8;
+      --ink: #2f2f2f;
+      --muted: #756f66;
+      --green: #5f7f58;
+      --soft-green: #edf2e8;
+      --line: #e8ddcd;
+      --peach: #e8a87c;
+      --shadow: 0 18px 48px rgba(83, 69, 48, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, #fff8e8 0, transparent 32%),
+        linear-gradient(135deg, #faf7f0 0%, #f7efe4 100%);
+      font-family: ui-serif, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; }
+    button, textarea { font: inherit; }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(145deg, #e8a87c, #efb8a8);
+      box-shadow: 0 10px 24px rgba(95, 127, 88, .16);
+      font-weight: 700;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .open-link {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 14px;
+      background: var(--paper);
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .72fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .intro, .qr-card, .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, .9);
+      box-shadow: var(--shadow);
+    }
+
+    .intro {
+      padding: clamp(24px, 5vw, 46px);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.03;
+      font-weight: 800;
+    }
+
+    .lead {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: clamp(21px, 3vw, 30px);
+      font-weight: 700;
+    }
+
+    .sub {
+      max-width: 640px;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 7px 12px;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .qr-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .qr-card img {
+      width: min(100%, 268px);
+      aspect-ratio: 1;
+      display: block;
+      margin: 0 auto 16px;
+      border: 10px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 22px rgba(83, 69, 48, .1);
+    }
+
+    .qr-card h2, .panel h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .qr-card p, .panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      min-height: 156px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, .86);
+    }
+
+    .step b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .demo {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 142px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    button, .button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .secondary {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--green);
+    }
+
+    .result {
+      display: grid;
+      gap: 12px;
+    }
+
+    .line {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 7px;
+      border-radius: 6px;
+      background: var(--soft-green);
+      color: var(--green);
+      padding: 3px 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .jp {
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      header { align-items: flex-start; }
+      .open-link { display: none; }
+      .hero, .demo { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .page { width: min(100% - 22px, 1120px); padding-top: 18px; }
+      .brand strong { font-size: 19px; }
+      .intro, .qr-card, .panel { box-shadow: 0 10px 28px rgba(83, 69, 48, .1); }
+      .steps { grid-template-columns: 1fr; }
+      .step { min-height: auto; }
+      .jp { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
-<div class="app">
-  <aside>
-    <div class="brand"><div class="logo">日</div><div><h1>日语开口急救包</h1><p>Nihongo Mouthpiece</p></div></div>
-    <nav>
-      <button class="tab active">首页</button>
-      <button class="tab">语感校准</button>
-      <button class="tab">生活场景</button>
-      <button class="tab">每日一句</button>
-      <button class="tab">收藏夹</button>
-    </nav>
-  </aside>
-  <main>
-    <section class="hero">
-      <div class="headline">
-        <h2>日语开口急救包</h2>
-        <p class="lead">把中文想法，变成自然日语。</p>
-        <p class="sub">你不是不会日语，你只是一直在说“翻译腔日语”。</p>
-        <div class="panel">
-          <label class="tag" for="source">我想说</label>
-          <textarea id="source" class="input">最近有点累，但还是想继续努力。</textarea>
-          <div class="actions"><button class="primary" id="generate">生成自然日语</button><button class="ghost" id="copyAll">复制结果</button></div>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="logo">日</div>
+        <div>
+          <strong>日语开口急救包</strong>
+          <span>Nihongo Mouthpiece</span>
         </div>
       </div>
-      <div class="panel output" id="output">
-        <div class="result"><span class="tag">自然日语版</span><div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div></div>
-        <div class="result"><span class="tag">更口语版</span><div class="jp">最近ちょっと疲れてるけど、もう少し頑張ってみようかな。</div></div>
-        <div class="result"><span class="tag">更温柔版</span><div class="jp">最近少し疲れ気味だけど、無理のない範囲でもう少し続けてみたい。</div></div>
-      </div>
-    </section>
-    <section class="section">
-      <h3>模式</h3>
-      <div class="modes"><button class="mode" data-mode="我想说"><span>我想说</span><small>把中文想法变成自然、可直接说出口的日语。</small></button><button class="mode" data-mode="语感校准"><span>语感校准</span><small>判断日语是否自然，修正翻译腔、语气硬和表达别扭。</small></button><button class="mode" data-mode="生活场景"><span>生活场景</span><small>覆盖日本生活里的真实沟通场景，给句子、对话和替换练习。</small></button><button class="mode" data-mode="JLPT 陪跑"><span>JLPT 陪跑</span><small>把备考拆成每天能完成的小任务。</small></button><button class="mode" data-mode="中日双语"><span>中日双语</span><small>把内容变成适合发布的中日双语文案。</small></button><button class="mode" data-mode="情绪表达"><span>情绪表达</span><small>把感谢、疲惫、拒绝、抱歉说得自然且不尴尬。</small></button><button class="mode" data-mode="每日一句"><span>每日一句</span><small>每天记住一句能用出去的日语，并生成打卡内容。</small></button></div>
-    </section>
-    <section class="section grid">
-      <div class="panel">
-        <h3>语感校准</h3>
-        <div class="result"><span class="tag">Before</span><div>私はあなたに会う時間がありません。</div></div>
-        <div class="result"><span class="tag">After</span><div class="jp">最近少し忙しくて、なかなかお会いする時間が取れなくて。</div><p class="muted">问题不是语法，而是语气太直接。</p></div>
-      </div>
-      <div class="panel">
-        <h3>生活场景</h3>
-        <select id="sceneSelect" class="input" style="min-height:auto"><option>医院说明孩子发烧</option><option>医院说明喉咙痛</option><option>医院询问过敏药</option><option>牙科预约改时间</option><option>药店买感冒药</option><option>药店询问儿童用量</option><option>幼儿园说明牛奶过敏</option><option>幼儿园请假</option><option>幼儿园接送迟到</option><option>学校和老师沟通作业</option><option>学校说明孩子不舒服</option><option>参加家长会</option><option>餐厅询问无奶菜单</option><option>餐厅要求少放葱</option><option>餐厅预约座位</option><option>咖啡店询问低咖啡因</option><option>便利店寄快递</option><option>便利店复印文件</option><option>超市询问商品位置</option><option>商场退换货</option><option>服装店试穿尺码</option><option>理发店预约</option><option>美容院说明想修刘海</option><option>银行开户</option><option>银行更改地址</option><option>邮局寄包裹</option><option>市役所办理住民票</option><option>市役所咨询保险</option><option>市役所搬家登记</option><option>入管局咨询签证</option><option>机场入境说明行程</option><option>酒店入住</option><option>酒店请求安静房间</option><option>租房看房</option><option>租房询问初期费用</option><option>联系房东维修</option><option>邻居寒暄</option><option>邻居说明噪音问题</option><option>垃圾分类咨询</option><option>搬家通知邻居</option><option>电话预约诊所</option><option>电话改约时间</option><option>电话取消预约</option><option>面试自我介绍</option><option>面试说明到岗时间</option><option>工作迟到说明</option><option>工作请假</option><option>工作确认邮件</option><option>会议里委婉反对</option><option>向同事求助</option><option>向上司汇报进度</option><option>客户道歉邮件</option><option>客户确认需求</option><option>朋友邀约拒绝</option><option>朋友约见面</option><option>表达感谢</option><option>表达抱歉</option><option>表达担心</option><option>表达想重新开始</option><option>表达需要时间</option><option>表达不想麻烦别人</option><option>表达最近有点累</option><option>表达想继续努力</option><option>社交媒体写日语短句</option><option>小红书中日双语笔记</option><option>视频号口播开头</option><option>YouTube 标题润色</option><option>Substack 开头</option><option>X 短帖</option><option>评论回复感谢</option><option>评论回复不同意见</option><option>网购咨询发货</option><option>网购退货</option><option>快递再配送</option><option>丢东西求助</option><option>车站问路</option><option>电车误乘说明</option><option>出租车说明目的地</option><option>公交问票价</option><option>自行车停车咨询</option><option>健身房咨询体验</option><option>图书馆办卡</option><option>社区活动报名</option><option>宠物医院预约</option><option>医院问诊前台</option><option>产检预约</option><option>儿童疫苗预约</option><option>眼科检查</option><option>皮肤科说明过敏</option><option>耳鼻喉说明症状</option><option>请别人拍照</option><option>旅行问推荐餐厅</option><option>旅馆寄存行李</option><option>寺社参拜礼貌询问</option><option>购买门票</option><option>活动签到</option><option>课程报名</option><option>日语学校咨询</option><option>老师请改作文</option><option>同学借笔记</option><option>图书馆续借</option><option>电力公司开通</option><option>燃气开通</option><option>网络报修</option><option>手机套餐咨询</option><option>手机解约</option><option>信用卡丢失</option><option>保险咨询</option><option>驾校咨询</option><option>停车场缴费</option><option>公寓管理公司报修</option><option>洗衣店取衣服</option><option>干洗说明污渍</option><option>医院取检查结果</option><option>药局确认处方</option><option>搬家公司报价</option><option>二手平台议价</option><option>二手交易约时间</option><option>约朋友喝茶</option><option>提醒对方别着急</option></select>
-        <div class="result"><span class="tag">先这样说</span><div id="sceneLine">すみません、少し確認したいことがあります。</div></div>
-      </div>
-    </section>
-    <section class="section checkin">
-      <div class="card-title">今日一句</div>
-      <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
-      <p>中文：最近有点累，但还是想再坚持一下。</p>
-      <p class="muted">今日提醒：别贪多，把这一句说顺，就是进步。</p>
-      <div class="actions"><button class="ghost" data-copy="最近少し疲れ気味だけど、もう少しだけ続けてみたい。">复制</button><button class="primary">打卡</button></div>
-    </section>
-  </main>
-</div>
-<div class="bottom"><button class="active">首页</button><button>学习</button><button>每日一句</button><button>收藏</button><button>我的</button></div>
-<script>
-const outputs=[
- ["自然日语版","最近少し疲れ気味だけど、もう少しだけ続けてみたい。"],
- ["更口语版","最近ちょっと疲れてるけど、もう少し頑張ってみようかな。"],
- ["更礼貌版","最近少し疲れが出ていますが、もう少し続けてみたいと思っています。"],
- ["更温柔版","最近少し疲れ気味だけど、無理のない範囲でもう少し続けてみたい。"]
-];
-function render(){document.getElementById("output").innerHTML=outputs.map(x=>'<div class="result"><span class="tag">'+x[0]+'</span><div class="jp">'+x[1]+'</div><button class="ghost" data-copy="'+x[1]+'">复制</button></div>').join("")}
-document.getElementById("generate").addEventListener("click",render);
-document.addEventListener("click",async e=>{const text=e.target.dataset.copy;if(!text)return;await navigator.clipboard.writeText(text);e.target.textContent="已复制";setTimeout(()=>e.target.textContent="复制",1200)});
-document.getElementById("copyAll").addEventListener("click",async()=>{await navigator.clipboard.writeText(outputs.map(x=>x[0]+"："+x[1]).join("\n"));document.getElementById("copyAll").textContent="已复制"});
-document.getElementById("sceneSelect").addEventListener("change",e=>{document.getElementById("sceneLine").textContent="すみません、"+e.target.value+"について少し相談させてください。"});
-</script>
+      <a class="open-link" href="https://estherliu-lab.github.io/nihongo-mouthpiece/">打开体验</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="intro">
+          <h1>日语开口急救包</h1>
+          <p class="lead">把中文想法，变成自然日语。</p>
+          <p class="sub">适合想开口说日语、但总觉得自己说得像直译的人。输入一句中文想法，参考自然日语表达、语感说明和可直接复制的句子。</p>
+          <div class="chips" aria-label="功能标签">
+            <span class="chip">我想说</span>
+            <span class="chip">语感校准</span>
+            <span class="chip">生活场景</span>
+            <span class="chip">情绪表达</span>
+            <span class="chip">每日一句</span>
+          </div>
+        </div>
+
+        <aside class="qr-card">
+          <img
+            alt="扫码打开日语开口急救包"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=https%3A%2F%2Festherliu-lab.github.io%2Fnihongo-mouthpiece%2F"
+          >
+          <h2>手机扫码打开</h2>
+          <p>也可以把页面添加到手机主屏幕，像小工具一样随手练一句。</p>
+        </aside>
+      </section>
+
+      <section class="section steps" aria-label="使用说明">
+        <div class="step">
+          <b>写一句中文</b>
+          <p>把你真正想表达的话写下来，不需要先翻译成日语。</p>
+        </div>
+        <div class="step">
+          <b>看自然说法</b>
+          <p>参考自然版、口语版、礼貌版和更柔和的表达。</p>
+        </div>
+        <div class="step">
+          <b>理解语感</b>
+          <p>看哪里像直译，为什么这样改会更适合真实沟通。</p>
+        </div>
+        <div class="step">
+          <b>复制去使用</b>
+          <p>挑一句最适合当下场景的话，复制到聊天、笔记或打卡里。</p>
+        </div>
+      </section>
+
+      <section class="section demo" aria-label="示例体验">
+        <div class="panel">
+          <h2>试一句</h2>
+          <p>示例内容可以直接复制，也可以换成你自己的想法。</p>
+          <textarea id="source">最近有点累，但还是想继续努力。</textarea>
+          <div class="actions">
+            <button id="show">查看示例表达</button>
+            <button class="secondary" id="copy">复制推荐句</button>
+          </div>
+        </div>
+
+        <div class="panel result" id="result">
+          <div class="line">
+            <span class="tag">自然日语版</span>
+            <div class="jp">最近少し疲れ気味だけど、もう少しだけ続けてみたい。</div>
+          </div>
+          <div class="line">
+            <span class="tag">更口语版</span>
+            <div class="jp">最近ちょっと疲れてるけど、もう少し頑張ってみようかな。</div>
+          </div>
+          <div class="line">
+            <span class="tag">语感说明</span>
+            <div>「疲れ気味」比直接说「疲れている」更柔和，适合表达“有点累，但还想继续”的状态。</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      今天先记住一句能说出口的日语。
+    </footer>
+  </div>
+
+  <script>
+    const recommended = "最近少し疲れ気味だけど、もう少しだけ続けてみたい。";
+    const result = document.getElementById("result");
+    const show = document.getElementById("show");
+    const copy = document.getElementById("copy");
+
+    show.addEventListener("click", () => {
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    copy.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(recommended);
+      copy.textContent = "已复制";
+      setTimeout(() => {
+        copy.textContent = "复制推荐句";
+      }, 1300);
+    });
+  </script>
 </body>
 </html>
