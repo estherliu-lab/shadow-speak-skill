@@ -8,13 +8,13 @@
 
 ## One-Line Promise
 
-- 中文: 一条视频，拆成能听懂、能跟读、能复习、能导出的学习包。
-- English: Turn one video transcript into speaking practice and review material.
-- 日本語: 1 本の動画テキストを、音読・復習・カード化できる学習パックへ。
+- 中文: 一段短文或台词，拆成能听懂、能跟读、能复习、能导出的学习包。
+- English: Turn short articles or dialogues into speaking practice and review material.
+- 日本語: 短い文章や会話文を、音読・復習・カード化できる学習パックへ。
 
 ## Audience Labels
 
-- YouTube learners
+- Short article and dialogue learners
 - English/Japanese shadowing learners
 - JLPT / CEFR / IELTS / TOEFL learners
 - Anki users
@@ -22,4 +22,4 @@
 
 ## Safety Copy
 
-This skill only tries accessible transcripts. If captions are not available, ask the user to paste subtitles or upload SRT/VTT.
+Use short articles, dialogues, pasted captions, and SRT/VTT as the reliable path. Only try YouTube links as an optional public-caption check when the user explicitly asks.

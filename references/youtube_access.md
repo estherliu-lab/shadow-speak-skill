@@ -1,6 +1,6 @@
 # YouTube Access Rules
 
-Use this reference whenever the user gives a YouTube link.
+Use this reference only when the user gives a YouTube link. This is an optional path, not the primary onboarding or first-test workflow.
 
 ## Safe Attempts
 
@@ -8,12 +8,14 @@ Try only accessible information:
 
 1. Public page title and description.
 2. Visible transcript text if the browsing environment exposes it.
-3. Public caption metadata through `scripts/youtube_transcript_fetcher.py <url> --json --timeout 5`, only when the user explicitly asks to try fetching or network access is already available.
+3. Public caption metadata through `scripts/youtube_transcript_fetcher.py <url> --json --timeout 5`, only when the user explicitly asks to try fetching and network access is already available without repeated prompts.
 4. User-provided captions, SRT, VTT, or copied transcript.
 
 ## Fast Recognition Rule
 
-For a plain YouTube link, make one quick caption attempt first. The helper checks both:
+For a plain YouTube link, default to the pasted Transcript/SRT/VTT path first. Do not run network caption fetching automatically if it would trigger permission prompts or make the workflow feel slow.
+
+If the user explicitly asks to try the link, make one quick caption attempt. The helper checks both:
 
 - watch page `captionTracks`
 - YouTube public `timedtext` track list

@@ -2,7 +2,7 @@
 
 **Language / 语言 / 言語:** [中文](#中文) | [English](#english) | [日本語](#日本語)
 
-Turn YouTube captions, SRT/VTT subtitles, English or Japanese text into shadowing scripts, sentence breakdowns, review cards, Anki CSV, quizzes, and daily study posts.
+Turn short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese text into shadowing scripts, sentence breakdowns, review cards, Anki CSV, quizzes, and daily study posts.
 
 说明页 / Website:
 [https://estherliu-lab.github.io/shadow-speak-skill/](https://estherliu-lab.github.io/shadow-speak-skill/)
@@ -18,23 +18,21 @@ Download ZIP:
 
 Shadow Speak 是一个 Codex skill。它不是普通翻译器，而是把真实材料拆成可练习的语言学习包：
 
-- 把 YouTube 字幕、SRT/VTT、文章、台词变成影子跟读稿
+- 把短文章、台词、字幕文本、SRT/VTT 变成影子跟读稿
 - 自动整理重点句、词汇、语法、语气和自然替代表达
 - 生成 Anki CSV、5 分钟复习卡、小测验和打卡文案
 - 支持英语和日语学习，默认用中文解释
 
 ### 最快最稳的用法
 
-最推荐：直接粘贴 YouTube 的“显示文字稿 / Transcript”、SRT/VTT 字幕，或一段你想学习的英文/日文文本。
+最推荐：直接粘贴一段短文章、台词、字幕文本，或上传/粘贴 SRT/VTT 字幕。
 
-只贴 YouTube 链接时，Skill 只能尝试读取公开视频暴露出来的字幕轨；如果视频没有公开字幕轨，就无法自动生成学习包。为了避免长时间等待和反复权限询问，默认会优先提示你粘贴字幕。你也可以明确说“请尝试抓取 YouTube 公开字幕”，Skill 会只快速尝试一次。
-
-日语歌、MV、AMV 和带画面歌词的视频经常没有公开字幕轨。它们通常需要你粘贴歌词/字幕片段或上传 SRT/VTT。Skill 不会下载音频/视频、不会 OCR 画面歌词，也不会凭标题猜歌词。
+第一次测试建议使用 2-5 句的短文章或台词，这样不用等待抓取，也不会遇到权限询问，能马上看到学习包效果。
 
 ```text
-$shadow-speak-skill 把下面这段日语字幕做成 N3-N2 学习包：假名、中文意思、句子拆解、跟读稿、小测验、Anki CSV 都要。
+$shadow-speak-skill 把下面这段短日文做成 N3-N2 学习包：假名、中文意思、句子拆解、跟读稿、小测验、Anki CSV 都要。
 
-（把 YouTube Transcript、SRT/VTT 清理后的字幕，或你想学的片段贴在这里）
+最近、短い文章を声に出して読む練習をしています。意味が全部わからなくても、何度も読んでいるうちに、少しずつ自然な言い方が身についてきました。
 ```
 
 ### 三种安装方法
@@ -90,7 +88,7 @@ git clone https://github.com/estherliu-lab/shadow-speak-skill.git ~/.codex/skill
 新开一个 Codex 对话，输入：
 
 ```text
-$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+$shadow-speak-skill 帮我把这段英文短文章做成影子跟读学习包，并生成 Anki CSV：
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.
 ```
@@ -102,7 +100,7 @@ When I first started learning a new language, I thought progress meant memorizin
 
 ## 输入识别
 - 学习语言：英语
-- 内容类型：短视频/字幕文本
+- 内容类型：短文章 / 学习反思
 - 适合等级：B1-B2
 
 ## 今天最值得学的表达
@@ -123,21 +121,21 @@ Front,Back,Tags
 "I later realized that...","我后来才意识到...|表达认知变化|I later realized that practice matters more than speed.|english,B1,reflection"
 ```
 
-### 完整案例：一段字幕如何变成学习包
+### 完整案例：一段短文章如何变成学习包
 
-这个案例适合放在介绍页里给第一次看到项目的用户理解：用户只需要贴一段字幕，Skill 会把它变成可以跟读、复习、测试和导出的学习资料。
+这个案例适合第一次测试：用户只需要贴一段短文章或台词，Skill 会把它变成可以跟读、复习、测试和导出的学习资料。
 
 **用户输入**
 
 ```text
-$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+$shadow-speak-skill 帮我把这段英文短文章做成影子跟读学习包，并生成 Anki CSV：
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.
 ```
 
 **Skill 处理过程**
 
-1. 判断语言和难度：英语，短字幕/学习反思类内容，适合 B1-B2。
+1. 判断语言和难度：英语，短文章/学习反思类内容，适合 B1-B2。
 2. 提取核心表达：`progress meant...`、`Later I realized that...`、`only become useful when...`。
 3. 拆解句子：解释自然意思、结构、语气和可替换表达。
 4. 生成跟读稿：用 `/` 标出停顿，用 `**bold**` 标出重音。
@@ -148,7 +146,7 @@ When I first started learning a new language, I thought progress meant memorizin
 ```markdown
 ## 输入识别
 - 学习语言：英语
-- 内容类型：短字幕 / 个人学习反思
+- 内容类型：短文章 / 个人学习反思
 - 适合等级：B1-B2
 
 ## 重点句子拆解
@@ -176,8 +174,9 @@ Front,Back,Tags
 ### 更多可直接测试的提示词
 
 ```text
-$shadow-speak-skill 这条 YouTube 视频我想学英语。如果你无法读取字幕，请提示我粘贴字幕：
-https://www.youtube.com/watch?v=VIDEO_ID
+$shadow-speak-skill 把下面这段英文短文章做成 B1-B2 学习包：中文摘要、重点表达、句子拆解、跟读稿、小测验、Anki CSV 都要。
+
+I used to think learning meant collecting more words. Now I try to choose a few sentences I can actually use in my life.
 ```
 
 ```text
@@ -210,7 +209,20 @@ $shadow-speak-skill 用严格老师模式检查我写的英文，指出不自然
 
 ### 注意
 
-如果只给 YouTube 链接，Skill 会尝试读取公开可访问的字幕，但不会绕过限制，也不会假装知道视频内容。读不到时，把字幕、SRT/VTT 或文稿贴给 Codex 即可。
+短文章、台词、字幕文本、SRT/VTT 是最稳定的输入。只给视频链接通常不稳定，不建议作为第一次测试。
+
+### 可选：如果你一定想用 YouTube 视频
+
+最稳方法不是复制视频链接，而是复制字幕文字：
+
+1. 打开 YouTube 视频页面。
+2. 找到视频下方标题/简介区域附近的 `...`、`更多` 或 `Show transcript / 显示文字稿`。
+3. 打开文字稿后，手动选中字幕文本并复制。
+4. 把复制出来的字幕贴给 Codex，并告诉它你想要的等级，比如 N3-N2、B1-B2。
+
+如果你有自己的字幕文件，也可以直接上传或粘贴 SRT/VTT。
+
+只有当视频本身有公开字幕轨时，才可以尝试复制视频链接让 Skill 快速检测一次。复制链接的方法是：点 YouTube 的 `Share / 分享` → `Copy / 复制链接`。但如果没有公开字幕轨，只贴链接无法生成学习包。
 
 ---
 
@@ -218,7 +230,7 @@ $shadow-speak-skill 用严格老师模式检查我写的英文，指出不自然
 
 ### What It Does
 
-Shadow Speak is a Codex skill for language learners. It turns accessible YouTube captions, SRT/VTT subtitles, English or Japanese passages, and learner-written sentences into practice-ready study material.
+Shadow Speak is a Codex skill for language learners. It turns short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese passages, and learner-written sentences into practice-ready study material.
 
 It can generate:
 
@@ -256,13 +268,13 @@ Restart Codex after installation.
 ### Try It
 
 ```text
-$shadow-speak-skill Turn this English transcript into a shadowing pack with sentence breakdowns and Anki CSV:
+$shadow-speak-skill Turn this short English article into a shadowing pack with sentence breakdowns and Anki CSV:
 
 I used to think learning meant collecting more words. Now I try to choose a few sentences I can actually use in my life.
 ```
 
 ```text
-$shadow-speak-skill Try this YouTube link first. If captions are unavailable, ask me to paste the transcript.
+$shadow-speak-skill Break down this short dialogue for speaking practice. Explain tone, pauses, useful phrases, and make Anki CSV cards.
 ```
 
 ```text
@@ -275,7 +287,7 @@ $shadow-speak-skill Break down this Japanese subtitle excerpt for an N3-N2 learn
 
 ### これは何ですか
 
-Shadow Speak は Codex 用の skill です。YouTube 字幕、SRT/VTT、英語・日本語の文章や文を、音読・シャドーイング・復習に使える学習パックへ変換します。
+Shadow Speak は Codex 用の skill です。短い文章、会話文、字幕テキスト、SRT/VTT、英語・日本語の文章や文を、音読・シャドーイング・復習に使える学習パックへ変換します。
 
 できること：
 

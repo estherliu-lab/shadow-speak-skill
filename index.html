@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shadow Speak Skill | 影子跟读</title>
-  <meta name="description" content="Codex skill for turning YouTube captions, SRT/VTT subtitles, English and Japanese text into shadowing and review materials.">
+  <meta name="description" content="Codex skill for turning short articles, dialogues, subtitle text, SRT/VTT files, English and Japanese text into shadowing and review materials.">
   <style>
     :root {
       --bg: #fbfaf7;
@@ -379,13 +379,13 @@
         <p class="eyebrow" data-copy="en">Codex Skill Plugin</p>
         <p class="eyebrow" data-copy="ja">Codex Skill プラグイン</p>
 
-        <h1 data-copy="zh">一条视频，变成能开口练的学习包。</h1>
-        <h1 data-copy="en">Turn one video into speaking practice.</h1>
-        <h1 data-copy="ja">動画テキストを、声に出せる学習パックへ。</h1>
+        <h1 data-copy="zh">一段文字，变成能开口练的学习包。</h1>
+        <h1 data-copy="en">Turn short text into speaking practice.</h1>
+        <h1 data-copy="ja">短いテキストを、声に出せる学習パックへ。</h1>
 
-        <p class="lead" data-copy="zh">Shadow Speak 会把 YouTube 可访问字幕、SRT/VTT、英文或日文文章拆成摘要、词汇、句子拆解、影子跟读稿、Anki CSV、小测验和打卡文案。</p>
-        <p class="lead" data-copy="en">Shadow Speak turns accessible YouTube captions, SRT/VTT files, English or Japanese text into summaries, phrase notes, sentence breakdowns, shadowing scripts, Anki CSV, quizzes, and study posts.</p>
-        <p class="lead" data-copy="ja">Shadow Speak は、取得可能な YouTube 字幕、SRT/VTT、英語・日本語テキストを、要約、表現メモ、文解説、音読台本、Anki CSV、クイズ、学習投稿に変換します。</p>
+        <p class="lead" data-copy="zh">Shadow Speak 会把短文章、台词、字幕文本、SRT/VTT、英文或日文文章拆成摘要、词汇、句子拆解、影子跟读稿、Anki CSV、小测验和打卡文案。</p>
+        <p class="lead" data-copy="en">Shadow Speak turns short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese text into summaries, phrase notes, sentence breakdowns, shadowing scripts, Anki CSV, quizzes, and study posts.</p>
+        <p class="lead" data-copy="ja">Shadow Speak は、短い文章、会話文、字幕テキスト、SRT/VTT、英語・日本語テキストを、要約、表現メモ、文解説、音読台本、Anki CSV、クイズ、学習投稿に変換します。</p>
 
         <div class="actions">
           <a class="button" href="https://github.com/estherliu-lab/shadow-speak-skill">GitHub</a>
@@ -412,7 +412,8 @@
           <div class="study-row"><span class="label">Tone</span><span>nostalgic, soft surprise, slow down on “missed”.</span></div>
           <div class="study-row"><span class="label">Export</span><span>Anki CSV + 5-minute review card + check-in copy</span></div>
           <div class="chips">
-            <span class="chip">YouTube captions</span>
+            <span class="chip">Short articles</span>
+            <span class="chip">Dialogues</span>
             <span class="chip">SRT / VTT</span>
             <span class="chip">English</span>
             <span class="chip">Japanese</span>
@@ -424,15 +425,15 @@
     <section id="install">
       <div class="notice" data-copy="zh">
         <strong>最快最稳的用法：</strong>
-        直接粘贴 YouTube 的“显示文字稿 / Transcript”、SRT/VTT 字幕，或一段你想学习的英文/日文文本。只贴 YouTube 链接时，Skill 只能尝试读取公开视频暴露出来的字幕轨；很多日语歌、MV、AMV 和画面歌词视频没有公开字幕轨，无法自动生成学习包。
+        直接粘贴一段短文章、台词、字幕文本，或上传/粘贴 SRT/VTT 字幕。第一次测试先用 2-5 句短文字材料，马上就能看到学习包效果。
       </div>
       <div class="notice" data-copy="en">
         <strong>Fastest reliable workflow:</strong>
-        Paste the YouTube Transcript, SRT/VTT captions, or the text you want to study. A bare YouTube link only works when YouTube exposes a public caption track; many songs, MVs, AMVs, and burned-in lyric videos do not.
+        Paste a short article, dialogue, subtitle text, or SRT/VTT captions. For the first test, use 2-5 short sentences so the result is immediate and reliable.
       </div>
       <div class="notice" data-copy="ja">
         <strong>一番安定した使い方：</strong>
-        YouTube の Transcript、SRT/VTT 字幕、または学びたい英文・日本語本文を貼り付けてください。YouTube リンクだけの場合、公開字幕トラックがある動画だけ読み取れます。歌、MV、AMV、画面内歌詞だけの動画は失敗することが多いです。
+        短い文章、会話文、字幕テキスト、または SRT/VTT を貼り付けてください。最初のテストでは動画リンクではなく、短いテキストを使うと安定します。
       </div>
 
       <h2 data-copy="zh">下载和安装</h2>
@@ -470,8 +471,8 @@
           <h3 data-copy="zh">安装后使用</h3>
           <h3 data-copy="en">Use After Install</h3>
           <h3 data-copy="ja">インストール後の使い方</h3>
-          <p data-copy="zh">重启 Codex，在新对话里输入 <strong>$shadow-speak-skill</strong> 加你的字幕、链接或文章。</p>
-          <p data-copy="en">Restart Codex, then start a new chat with <strong>$shadow-speak-skill</strong> plus your captions, link, or text.</p>
+          <p data-copy="zh">重启 Codex，在新对话里输入 <strong>$shadow-speak-skill</strong> 加你的短文章、台词、字幕文本或 SRT/VTT。</p>
+          <p data-copy="en">Restart Codex, then start a new chat with <strong>$shadow-speak-skill</strong> plus your short article, dialogue, captions, or SRT/VTT text.</p>
           <p data-copy="ja">Codex を再起動し、新しいチャットで <strong>$shadow-speak-skill</strong> と素材を入力します。</p>
         </div>
       </div>
@@ -513,12 +514,12 @@ After installation, tell me how to restart Codex and test it.</code></pre>
       <p class="section-lead" data-copy="ja">単なる翻訳ツールではなく、リアルな素材を「実際に言える表現」に変えるための skill です。</p>
       <div class="grid">
         <div class="panel">
-          <h3 data-copy="zh">视频学习者</h3>
-          <h3 data-copy="en">Video Learners</h3>
-          <h3 data-copy="ja">動画で学ぶ人</h3>
-          <p data-copy="zh">用 YouTube、课程片段、采访和字幕学英语或日语的人。</p>
-          <p data-copy="en">People studying from YouTube, clips, interviews, and captions.</p>
-          <p data-copy="ja">YouTube、動画クリップ、インタビュー、字幕で学ぶ人。</p>
+          <h3 data-copy="zh">文章与台词学习者</h3>
+          <h3 data-copy="en">Text And Dialogue Learners</h3>
+          <h3 data-copy="ja">文章・会話で学ぶ人</h3>
+          <p data-copy="zh">用短文章、真实台词、课程文本和字幕文本学英语或日语的人。</p>
+          <p data-copy="en">People studying from short articles, real dialogue, course text, and captions.</p>
+          <p data-copy="ja">短い文章、会話文、教材テキスト、字幕テキストで学ぶ人。</p>
         </div>
         <div class="panel">
           <h3 data-copy="zh">跟读练习者</h3>
@@ -549,9 +550,9 @@ After installation, tell me how to restart Codex and test it.</code></pre>
             <strong data-copy="zh">给 Codex 一段材料</strong>
             <strong data-copy="en">Give Codex source material</strong>
             <strong data-copy="ja">素材を Codex に渡す</strong>
-            <p data-copy="zh">可以是 YouTube 链接、字幕文本、SRT/VTT、英文文章、日文文章或一句中文想表达的话。</p>
-            <p data-copy="en">Use a YouTube link, pasted captions, SRT/VTT, an English or Japanese passage, or a Chinese idea.</p>
-            <p data-copy="ja">YouTube リンク、字幕、SRT/VTT、英語・日本語本文、中国語の言いたい内容を渡します。</p>
+            <p data-copy="zh">可以是短文章、台词、字幕文本、SRT/VTT、英文文章、日文文章或一句中文想表达的话。</p>
+            <p data-copy="en">Use a short article, dialogue, pasted captions, SRT/VTT, an English or Japanese passage, or a Chinese idea.</p>
+            <p data-copy="ja">短い文章、会話文、字幕、SRT/VTT、英語・日本語本文、中国語の言いたい内容を渡します。</p>
           </div>
         </div>
         <div class="step">
@@ -559,7 +560,7 @@ After installation, tell me how to restart Codex and test it.</code></pre>
             <strong data-copy="zh">选择输出模式</strong>
             <strong data-copy="en">Choose a mode</strong>
             <strong data-copy="ja">モードを選ぶ</strong>
-            <p data-copy="zh">可指定视频精学、影子跟读、句子拆骨、考试强化、Anki、每日打卡或角色陪练。</p>
+            <p data-copy="zh">可指定材料精学、影子跟读、句子拆骨、考试强化、Anki、每日打卡或角色陪练。</p>
             <p data-copy="en">Ask for deep study, shadowing, sentence breakdowns, exam boost, Anki, daily posts, or coaching persona.</p>
             <p data-copy="ja">精読、音読、文解説、試験対策、Anki、学習投稿、コーチ役を指定できます。</p>
           </div>
@@ -587,7 +588,9 @@ After installation, tell me how to restart Codex and test it.</code></pre>
           <h3 data-copy="en">Inputs</h3>
           <h3 data-copy="ja">入力</h3>
           <ul>
-            <li>YouTube URL with public captions</li>
+            <li>Short articles</li>
+            <li>Dialogues</li>
+            <li>Subtitle text</li>
             <li>SRT / VTT captions</li>
             <li>English / Japanese text</li>
             <li>Chinese ideas for expression</li>
@@ -619,24 +622,12 @@ After installation, tell me how to restart Codex and test it.</code></pre>
     </section>
 
     <section>
-      <h2 data-copy="zh">YouTube 读取边界</h2>
-      <h2 data-copy="en">YouTube Transcript Boundaries</h2>
-      <h2 data-copy="ja">YouTube 取得の範囲</h2>
-      <p class="section-lead" data-copy="zh">这个 skill 只尝试公开可访问的字幕或页面可见文稿。无法访问时，它会请你粘贴字幕，不会假装读到了视频内容。</p>
-      <p class="section-lead" data-copy="en">The skill only tries publicly accessible captions or visible transcripts. If unavailable, it asks you to paste captions instead of inventing content.</p>
-      <p class="section-lead" data-copy="ja">公開・表示可能な字幕だけを試します。取得できない場合は、内容を作らず字幕の貼り付けを依頼します。</p>
-      <pre><code>python scripts/youtube_transcript_fetcher.py "https://www.youtube.com/watch?v=VIDEO_ID" transcript.txt
-python scripts/subtitle_cleaner.py transcript.vtt cleaned.txt
-python scripts/anki_csv_exporter.py cards.json cards.csv</code></pre>
-    </section>
-
-    <section>
-      <h2 data-copy="zh">完整案例：一段字幕如何变成学习包</h2>
-      <h2 data-copy="en">Full Example: From Transcript To Study Pack</h2>
-      <h2 data-copy="ja">使用例: 字幕から学習パックへ</h2>
-      <p class="section-lead" data-copy="zh">下面是一个用户最容易理解的流程：贴一段视频字幕，Codex 用这个 skill 把它拆成能读、能背、能复习、能导出的资料。</p>
-      <p class="section-lead" data-copy="en">Here is the simplest workflow: paste a short transcript, and Codex turns it into material you can read aloud, memorize, review, and export.</p>
-      <p class="section-lead" data-copy="ja">短い字幕を貼ると、Codex が音読、暗記、復習、エクスポートできる教材に変換します。</p>
+      <h2 data-copy="zh">完整案例：一段短文章如何变成学习包</h2>
+      <h2 data-copy="en">Full Example: From Short Article To Study Pack</h2>
+      <h2 data-copy="ja">使用例: 短い文章から学習パックへ</h2>
+      <p class="section-lead" data-copy="zh">下面是一个用户最容易理解的流程：贴一段短文章，Codex 用这个 skill 把它拆成能读、能背、能复习、能导出的资料。</p>
+      <p class="section-lead" data-copy="en">Here is the simplest workflow: paste a short article, and Codex turns it into material you can read aloud, memorize, review, and export.</p>
+      <p class="section-lead" data-copy="ja">短い文章を貼ると、Codex が音読、暗記、復習、エクスポートできる教材に変換します。</p>
       <div class="grid">
         <div class="panel">
           <h3 data-copy="zh">用户输入</h3>
@@ -663,19 +654,19 @@ python scripts/anki_csv_exporter.py cards.json cards.csv</code></pre>
           <p data-copy="ja">翻訳だけでなく、その日に声に出し、翌日復習し、Anki に入れられる教材です。</p>
         </div>
       </div>
-      <pre data-copy="zh"><code>$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+      <pre data-copy="zh"><code>$shadow-speak-skill 帮我把这段英文短文章做成影子跟读学习包，并生成 Anki CSV：
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
-      <pre data-copy="en"><code>$shadow-speak-skill Turn this transcript into a shadowing study pack and Anki CSV:
+      <pre data-copy="en"><code>$shadow-speak-skill Turn this short English article into a shadowing study pack and Anki CSV:
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
-      <pre data-copy="ja"><code>$shadow-speak-skill この英語字幕をシャドーイング教材と Anki CSV にしてください：
+      <pre data-copy="ja"><code>$shadow-speak-skill この短い英語文章をシャドーイング教材と Anki CSV にしてください：
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.</code></pre>
       <pre data-copy="zh"><code># 输出片段示例
 ## 输入识别
 - 学习语言：英语
-- 内容类型：短视频/字幕文本
+- 内容类型：短文章 / 学习反思
 - 适合等级：B1-B2
 
 ## 重点句子拆解
@@ -692,7 +683,7 @@ Front,Back,Tags
       <pre data-copy="en"><code># Example output excerpt
 ## Input Detection
 - Learning language: English
-- Content type: short transcript
+- Content type: short article
 - Level: B1-B2
 
 ## Sentence Breakdown
@@ -709,7 +700,7 @@ Front,Back,Tags
       <pre data-copy="ja"><code># 出力例
 ## 入力判定
 - 学習言語：英語
-- 種類：短い字幕
+- 種類：短い文章
 - レベル：B1-B2
 
 ## 文の解説
@@ -720,21 +711,21 @@ Original: Later I realized that words only become useful when I can use them in 
 ## 音読
 Later I **realized** / that words only become **useful** / when I can use them / in a real **situation**.</code></pre>
       <div class="panel" data-copy="zh" style="margin-top:14px;">
-        <h3>清晰中文案例：字幕到学习包</h3>
-        <p><strong>用户输入：</strong>贴一段英文字幕，并要求生成影子跟读学习包和 Anki CSV。</p>
+        <h3>清晰中文案例：短文章到学习包</h3>
+        <p><strong>用户输入：</strong>贴一段英文短文章，并要求生成影子跟读学习包和 Anki CSV。</p>
         <p><strong>Skill 处理：</strong>判断英语 B1-B2 难度，提取 <code>progress meant...</code>、<code>Later I realized that...</code>、<code>only become useful when...</code>，再拆解句子结构、语气、停顿和重音。</p>
         <p><strong>学习包输出：</strong>中文摘要、重点表达、句子拆解、慢速/自然/情绪模仿跟读稿、5 分钟复习卡、小测验、答案解析和打卡文案。</p>
         <p><strong>Anki CSV：</strong>这是给已经使用 Anki 的用户准备的可选导出。普通用户不用安装 Anki，也可以直接看学习包练习；Anki 用户可以导入 CSV，把句子变成长期复习卡。</p>
       </div>
       <pre data-copy="zh"><code># 用户输入
-$shadow-speak-skill 帮我把这段英文字幕做成影子跟读学习包，并生成 Anki CSV：
+$shadow-speak-skill 帮我把这段英文短文章做成影子跟读学习包，并生成 Anki CSV：
 
 When I first started learning a new language, I thought progress meant memorizing more words every day. Later I realized that words only become useful when I can use them in a real situation.
 
 # 输出片段
 ## 输入识别
 - 学习语言：英语
-- 内容类型：短字幕 / 个人学习反思
+- 内容类型：短文章 / 个人学习反思
 - 适合等级：B1-B2
 
 ## 重点句子拆解
@@ -754,9 +745,9 @@ Front,Back,Tags
       <h2 data-copy="zh">可直接测试的提示词</h2>
       <h2 data-copy="en">Starter Prompts</h2>
       <h2 data-copy="ja">試せるプロンプト</h2>
-      <pre data-copy="zh"><code># YouTube 视频
-$shadow-speak-skill 这条 YouTube 视频我想学英语。如果你无法读取字幕，请提示我粘贴字幕：
-https://www.youtube.com/watch?v=VIDEO_ID
+      <pre data-copy="zh"><code># 短文章
+$shadow-speak-skill 把下面这段英文短文章做成 B1-B2 学习包：中文摘要、重点表达、句子拆解、跟读稿、小测验、Anki CSV 都要。
+I used to think learning meant collecting more words. Now I try to choose a few sentences I can actually use in my life.
 
 # SRT/VTT 字幕
 $shadow-speak-skill 帮我清理这段 SRT 字幕，选出 10 个最值得跟读的句子，并生成 Anki CSV。
@@ -781,9 +772,9 @@ $shadow-speak-skill 生成今天的学习打卡文案，适合朋友圈、小红
 
 # 纠错
 $shadow-speak-skill 用严格老师模式检查我写的英文，指出不自然的地方，再给我更自然版本。</code></pre>
-      <pre data-copy="en"><code># YouTube
-$shadow-speak-skill Try this YouTube link first. If captions are unavailable, ask me to paste the transcript:
-https://www.youtube.com/watch?v=VIDEO_ID
+      <pre data-copy="en"><code># Short article
+$shadow-speak-skill Turn this short English article into a B1-B2 study pack with summary, useful phrases, sentence breakdowns, shadowing, quiz, and Anki CSV.
+I used to think learning meant collecting more words. Now I try to choose a few sentences I can actually use in my life.
 
 # Captions
 $shadow-speak-skill Clean this SRT/VTT subtitle file and choose 10 sentences worth shadowing.
@@ -808,9 +799,9 @@ $shadow-speak-skill Write a natural daily study check-in for WeChat, Xiaohongshu
 
 # Correction
 $shadow-speak-skill Strict teacher mode: correct my English and explain what sounds unnatural.</code></pre>
-      <pre data-copy="ja"><code># YouTube
-$shadow-speak-skill この YouTube リンクを試してください。字幕が取れなければ、貼り付けるように案内してください：
-https://www.youtube.com/watch?v=VIDEO_ID
+      <pre data-copy="ja"><code># 短い文章
+$shadow-speak-skill この短い英語文章を B1-B2 向け教材にしてください。要約、表現、文解説、音読、クイズ、Anki CSV も入れてください。
+I used to think learning meant collecting more words. Now I try to choose a few sentences I can actually use in my life.
 
 # 字幕
 $shadow-speak-skill この SRT/VTT 字幕を整理し、シャドーイングに向いた 10 文を選んでください。
@@ -835,6 +826,41 @@ $shadow-speak-skill 今日の学習投稿文を作ってください。自然で
 
 # 添削
 $shadow-speak-skill 厳しい先生モードで私の英語を直し、不自然なところを説明してください。</code></pre>
+    </section>
+
+    <section>
+      <h2 data-copy="zh">最后才考虑 YouTube</h2>
+      <h2 data-copy="en">YouTube Is Optional</h2>
+      <h2 data-copy="ja">YouTube は最後の選択肢</h2>
+      <p class="section-lead" data-copy="zh">只复制 YouTube 链接并不稳定。最稳方法是先复制字幕文字，或准备 SRT/VTT 文件，再交给 Skill 生成学习包。</p>
+      <p class="section-lead" data-copy="en">A bare YouTube link is not reliable. The stable path is to copy the transcript text or prepare an SRT/VTT file, then give that text to the skill.</p>
+      <p class="section-lead" data-copy="ja">YouTube リンクだけでは安定しません。安定する方法は、字幕テキストをコピーするか SRT/VTT を用意してから skill に渡すことです。</p>
+      <div class="grid">
+        <div class="panel">
+          <h3 data-copy="zh">复制字幕文字</h3>
+          <h3 data-copy="en">Copy Transcript Text</h3>
+          <h3 data-copy="ja">字幕テキストをコピー</h3>
+          <p data-copy="zh">打开视频，点标题或简介附近的 <strong>...</strong>、<strong>更多</strong> 或 <strong>Show transcript / 显示文字稿</strong>，打开后选中文字并复制，再贴给 Codex。</p>
+          <p data-copy="en">Open the video, choose <strong>...</strong>, <strong>More</strong>, or <strong>Show transcript</strong> near the title or description, select the transcript text, copy it, and paste it into Codex.</p>
+          <p data-copy="ja">動画を開き、タイトルや概要欄付近の <strong>...</strong>、<strong>More</strong>、または <strong>Show transcript</strong> を開き、文字を選択してコピーし、Codex に貼ります。</p>
+        </div>
+        <div class="panel">
+          <h3 data-copy="zh">上传或粘贴 SRT/VTT</h3>
+          <h3 data-copy="en">Use SRT/VTT</h3>
+          <h3 data-copy="ja">SRT/VTT を使う</h3>
+          <p data-copy="zh">如果你已经有字幕文件，直接上传或把内容粘贴出来。Skill 会先清理时间轴、编号和重复行，再生成学习包。</p>
+          <p data-copy="en">If you already have a caption file, upload it or paste the content. The skill cleans timestamps, cue IDs, and repeated lines before generating the study pack.</p>
+          <p data-copy="ja">字幕ファイルがある場合は、アップロードするか内容を貼ってください。タイムスタンプや重複行を整理してから教材化します。</p>
+        </div>
+        <div class="panel">
+          <h3 data-copy="zh">什么时候只贴链接</h3>
+          <h3 data-copy="en">When Links Work</h3>
+          <h3 data-copy="ja">リンクだけで使える場合</h3>
+          <p data-copy="zh">只有公开视频暴露了公开字幕轨时，才可以尝试复制链接检测一次。复制方法：点 YouTube 的 <strong>Share / 分享</strong>，再点 <strong>Copy / 复制链接</strong>。如果没有公开字幕轨，只贴链接无法生成学习包。</p>
+          <p data-copy="en">A link only works when the public video exposes a public caption track. Copy it with <strong>Share</strong> then <strong>Copy</strong>. If no public caption track exists, the link alone cannot create a study pack.</p>
+          <p data-copy="ja">公開動画に公開字幕トラックがある場合だけ、リンクで一度試せます。<strong>Share</strong> から <strong>Copy</strong> します。公開字幕がなければ、リンクだけでは教材を作れません。</p>
+        </div>
+      </div>
     </section>
   </main>
 
