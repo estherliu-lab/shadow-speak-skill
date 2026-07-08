@@ -1,7 +1,7 @@
 {
   "name": "shadow-speak-skill",
   "version": "1.0.0",
-  "description": "Turn English or Japanese video transcripts, subtitles, articles, and sentences into shadowing and review materials.",
+  "description": "Turn short articles, dialogues, subtitle text, SRT/VTT captions, English or Japanese text into shadowing and review materials.",
   "author": {
     "name": "Esther Liu Lab",
     "url": "https://github.com/estherliu-lab"
@@ -9,20 +9,20 @@
   "homepage": "https://estherliu-lab.github.io/shadow-speak-skill/",
   "repository": "https://github.com/estherliu-lab/shadow-speak-skill",
   "license": "MIT",
-  "keywords": ["language-learning", "youtube", "shadowing", "english", "japanese", "anki"],
+  "keywords": ["language-learning", "shadowing", "english", "japanese", "anki", "subtitles"],
   "skills": "./SKILL.md",
   "interface": {
     "displayName": "Shadow Speak / 影子跟读",
-    "shortDescription": "Turn video text into speaking practice, review cards, and study notes.",
-    "longDescription": "Shadow Speak helps English and Japanese learners convert YouTube captions, SRT/VTT subtitles, articles, and sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. It tries only accessible transcript sources and asks users to paste captions when video text is unavailable.",
+    "shortDescription": "Turn short text into speaking practice, review cards, and study notes.",
+    "longDescription": "Shadow Speak helps English and Japanese learners convert short articles, dialogues, subtitle text, SRT/VTT captions, and learner-written sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. YouTube links are optional and work only when public captions are available; pasted transcripts or SRT/VTT are the reliable path.",
     "developerName": "Esther Liu Lab",
     "category": "Education",
     "capabilities": ["Read", "Write", "Export"],
     "websiteURL": "https://estherliu-lab.github.io/shadow-speak-skill/",
     "defaultPrompt": [
-      "把这段 YouTube 字幕做成影子跟读学习包。",
-      "帮我拆解这段英文并生成 Anki CSV。",
-      "用日文 N3-N2 水平整理这段字幕。"
+      "把下面这段英文短文章做成影子跟读学习包，并生成 Anki CSV。",
+      "用电影字幕老师模式拆解这段英文台词，重点讲语气、停顿和重音。",
+      "把这段日语短文做成 N3-N2 学习包：假名、中文意思、句子拆解、跟读稿、小测验都要。"
     ],
     "brandColor": "#2F7D6D"
   }
