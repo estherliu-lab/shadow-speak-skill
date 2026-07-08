@@ -5,7 +5,7 @@ Use these templates when the user asks for a specific mode or when a default ful
 ## Default Full Package
 
 ```markdown
-# 影子跟读学习包
+# 跟读学习包
 
 ## 0. 输入识别
 - 学习语言:
@@ -39,7 +39,7 @@ Use these templates when the user asks for a specific mode or when a default ful
 - 替代表达:
 - 跟读提示:
 
-## 5. 影子跟读朗读稿
+## 5. 跟读稿
 ### 慢速版
 ### 自然版
 ### 情绪模仿版
@@ -70,7 +70,7 @@ Front,Back,Tags
 ## Shadowing
 
 ```markdown
-# 影子跟读朗读稿
+# 跟读稿
 
 ## 1. 原句
 

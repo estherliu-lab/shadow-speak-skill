@@ -57,5 +57,5 @@ Use this clearer Chinese fallback for music videos and normal user-facing replie
 Then offer the next action:
 
 ```text
-你贴上字幕后，我会先清理时间轴和重复行，再帮你生成：内容摘要、重点句、句子拆解、影子跟读稿、Anki CSV 和打卡文案。
+你贴上字幕后，我会先清理时间轴和重复行，再帮你生成：内容摘要、重点句、句子拆解、跟读稿、Anki CSV 和打卡文案。
 ```

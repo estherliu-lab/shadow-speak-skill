@@ -2,9 +2,9 @@
 
 ## Names
 
-- Chinese: 语境学习包 Skill
-- English: Lingua Pack Skill
-- Japanese: リンガパック Skill
+- Chinese: 学习包生成器 Skill
+- English: Study Pack Builder Skill
+- Japanese: 学習パックビルダー Skill
 
 ## One-Line Promise
 

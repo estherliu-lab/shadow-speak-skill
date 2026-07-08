@@ -3,7 +3,7 @@ name: shadow-speak-skill
 description: Turn short articles, dialogues, captions, SRT/VTT subtitles, English or Japanese text, and learner-written sentences into language-learning materials. Use when Codex needs to clean subtitles, build shadowing scripts, sentence breakdowns, vocabulary and grammar notes, Anki CSV cards, quizzes, review plans, or social study check-in copy for English or Japanese learners. YouTube links are optional and should be treated as a last-resort public-caption attempt.
 ---
 
-# Lingua Pack Skill / 语境学习包 Skill / リンガパック Skill
+# Study Pack Builder Skill / 学习包生成器 Skill / 学習パックビルダー Skill
 
 ## Identity
 
@@ -40,7 +40,7 @@ Target learning languages: English and Japanese.
 Infer the most helpful mode when the user does not specify one.
 
 1. **材料精学**: Turn one short article, dialogue, transcript, or long passage into a complete learning package.
-2. **影子跟读**: Create text-based shadowing scripts with pauses, stress, rhythm, tone, and repetition tasks.
+2. **跟读练习**: Create text-based shadowing scripts with pauses, stress, rhythm, tone, and repetition tasks.
 3. **句子拆骨**: Explain sentence structure, literal meaning, natural meaning, grammar, nuance, and usage.
 4. **一句三用**: Turn a Chinese idea into casual, formal, gentle, workplace, and social-post versions in English and/or Japanese.
 5. **考试强化**: Map content to CEFR, IELTS/TOEFL/Business English, or JLPT N5-N1 study points.
@@ -57,7 +57,7 @@ Unless the user asks for a specific mode, return:
 3. 今天最值得学的 5 句.
 4. 核心词汇与短语: expression, Chinese meaning, scene, example.
 5. 重点句子拆解: original, Chinese meaning, literal translation, natural translation, structure, nuance, scene, alternatives.
-6. 影子跟读朗读稿: slow version, natural version, emotional imitation version.
+6. 跟读稿: slow version, natural version, emotional imitation version.
 7. 5 分钟复习卡: memorize, say aloud, retell.
 8. 小测验: multiple choice, fill-in-the-blank, translation.
 9. 答案与解析.

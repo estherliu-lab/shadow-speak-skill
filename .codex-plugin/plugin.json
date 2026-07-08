@@ -6,21 +6,19 @@
     "name": "Esther Liu Lab",
     "url": "https://github.com/estherliu-lab"
   },
-  "homepage": "https://estherliu-lab.github.io/shadow-speak-skill/",
-  "repository": "https://github.com/estherliu-lab/shadow-speak-skill",
+  "repository": "https://github.com/estherliu-lab/Study-Pack-Builder-Skill",
   "license": "MIT",
   "keywords": ["language-learning", "shadowing", "english", "japanese", "anki", "subtitles"],
   "skills": "./SKILL.md",
   "interface": {
-    "displayName": "Lingua Pack / 语境学习包",
+    "displayName": "Study Pack Builder / 学习包生成器",
     "shortDescription": "Turn short text into speaking practice, review cards, and study notes.",
-    "longDescription": "Lingua Pack helps English and Japanese learners convert short articles, dialogues, subtitle text, SRT/VTT captions, and learner-written sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. YouTube links are optional and work only when public captions are available; pasted transcripts or SRT/VTT are the reliable path.",
+    "longDescription": "Study Pack Builder helps English and Japanese learners convert short articles, dialogues, subtitle text, SRT/VTT captions, and learner-written sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. YouTube links are optional and work only when public captions are available; pasted transcripts or SRT/VTT are the reliable path.",
     "developerName": "Esther Liu Lab",
     "category": "Education",
     "capabilities": ["Read", "Write", "Export"],
-    "websiteURL": "https://estherliu-lab.github.io/shadow-speak-skill/",
     "defaultPrompt": [
-      "把下面这段英文短文章做成影子跟读学习包，并生成 Anki CSV。",
+      "把下面这段英文短文章做成跟读学习包，并生成 Anki CSV。",
       "用电影字幕老师模式拆解这段英文台词，重点讲语气、停顿和重音。",
       "把这段日语短文做成 N3-N2 学习包：假名、中文意思、句子拆解、跟读稿、小测验都要。"
     ],
