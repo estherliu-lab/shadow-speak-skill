@@ -2,9 +2,9 @@
 
 ## Names
 
-- Chinese: 影子跟读 Skill
-- English: Shadow Speak Skill
-- Japanese: シャドー音読スキル
+- Chinese: 语境学习包 Skill
+- English: Lingua Pack Skill
+- Japanese: リンガパック Skill
 
 ## One-Line Promise
 

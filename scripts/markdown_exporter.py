@@ -19,7 +19,7 @@ def slugify(value: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Save a learning package as Markdown.")
     parser.add_argument("input", help="Input Markdown file")
-    parser.add_argument("--topic", default="shadow speak", help="Topic used in output filename")
+    parser.add_argument("--topic", default="lingua pack", help="Topic used in output filename")
     parser.add_argument("--output-dir", default="exports", help="Directory for exported Markdown")
     args = parser.parse_args()
 
@@ -29,7 +29,7 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     date = dt.date.today().strftime("%Y%m%d")
-    output = output_dir / f"shadow_speak_{date}_{slugify(args.topic)}.md"
+    output = output_dir / f"lingua_pack_{date}_{slugify(args.topic)}.md"
     output.write_text(content.rstrip() + "\n", encoding="utf-8")
     print(output)
     return 0

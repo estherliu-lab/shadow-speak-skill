@@ -3,7 +3,7 @@ name: shadow-speak-skill
 description: Turn short articles, dialogues, captions, SRT/VTT subtitles, English or Japanese text, and learner-written sentences into language-learning materials. Use when Codex needs to clean subtitles, build shadowing scripts, sentence breakdowns, vocabulary and grammar notes, Anki CSV cards, quizzes, review plans, or social study check-in copy for English or Japanese learners. YouTube links are optional and should be treated as a last-resort public-caption attempt.
 ---
 
-# Shadow Speak Skill / 影子跟读 Skill / シャドー音読スキル
+# Lingua Pack Skill / 语境学习包 Skill / リンガパック Skill
 
 ## Identity
 

@@ -12,9 +12,9 @@
   "keywords": ["language-learning", "shadowing", "english", "japanese", "anki", "subtitles"],
   "skills": "./SKILL.md",
   "interface": {
-    "displayName": "Shadow Speak / 影子跟读",
+    "displayName": "Lingua Pack / 语境学习包",
     "shortDescription": "Turn short text into speaking practice, review cards, and study notes.",
-    "longDescription": "Shadow Speak helps English and Japanese learners convert short articles, dialogues, subtitle text, SRT/VTT captions, and learner-written sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. YouTube links are optional and work only when public captions are available; pasted transcripts or SRT/VTT are the reliable path.",
+    "longDescription": "Lingua Pack helps English and Japanese learners convert short articles, dialogues, subtitle text, SRT/VTT captions, and learner-written sentences into shadowing scripts, sentence breakdowns, vocabulary notes, quizzes, Anki CSV cards, and social study check-in copy. YouTube links are optional and work only when public captions are available; pasted transcripts or SRT/VTT are the reliable path.",
     "developerName": "Esther Liu Lab",
     "category": "Education",
     "capabilities": ["Read", "Write", "Export"],

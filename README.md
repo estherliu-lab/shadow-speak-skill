@@ -1,4 +1,4 @@
-# Shadow Speak Skill / 影子跟读 Skill / シャドー音読スキル
+# Lingua Pack Skill / 语境学习包 Skill / リンガパック Skill
 
 **Language / 语言 / 言語:** [中文](#中文) | [English](#english) | [日本語](#日本語)
 
@@ -6,7 +6,7 @@ Turn short articles, dialogues, subtitle text, SRT/VTT files, English or Japanes
 
 ## English Introduction
 
-Shadow Speak Skill is a Codex skill for English and Japanese language learners who want to turn real study material into practice-ready learning packs. Instead of only translating text, it helps learners understand useful sentences, speak them aloud, review them later, and export them into reusable study formats.
+Lingua Pack Skill is a Codex skill for English and Japanese language learners who want to turn real study material into practice-ready learning packs. Instead of only translating text, it helps learners understand useful sentences, speak them aloud, review them later, and export them into reusable study formats.
 
 The most reliable workflow is simple: paste a short article, dialogue, subtitle text, or SRT/VTT captions, then ask Codex to create a shadowing pack. The skill can generate Chinese summaries, key expressions, sentence breakdowns, pronunciation and rhythm notes, quizzes, Anki CSV cards, and short daily study posts.
 
@@ -24,7 +24,7 @@ Download ZIP:
 
 ### 这是什么
 
-Shadow Speak 是一个 Codex skill。它不是普通翻译器，而是把真实材料拆成可练习的语言学习包：
+Lingua Pack 是一个 Codex skill，中文名是“语境学习包”。它不是普通翻译器，而是把真实材料拆成可练习的语言学习包：
 
 - 把短文章、台词、字幕文本、SRT/VTT 变成影子跟读稿
 - 自动整理重点句、词汇、语法、语气和自然替代表达
@@ -238,7 +238,7 @@ $shadow-speak-skill 用严格老师模式检查我写的英文，指出不自然
 
 ### What It Does
 
-Shadow Speak is a Codex skill for language learners. It turns short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese passages, and learner-written sentences into practice-ready study material.
+Lingua Pack Skill is a Codex skill for language learners. It turns short articles, dialogues, subtitle text, SRT/VTT files, English or Japanese passages, and learner-written sentences into practice-ready study material.
 
 It can generate:
 
@@ -295,7 +295,7 @@ $shadow-speak-skill Break down this Japanese subtitle excerpt for an N3-N2 learn
 
 ### これは何ですか
 
-Shadow Speak は Codex 用の skill です。短い文章、会話文、字幕テキスト、SRT/VTT、英語・日本語の文章や文を、音読・シャドーイング・復習に使える学習パックへ変換します。
+Lingua Pack Skill は Codex 用の skill です。短い文章、会話文、字幕テキスト、SRT/VTT、英語・日本語の文章や文を、音読・シャドーイング・復習に使える学習パックへ変換します。
 
 できること：
 
